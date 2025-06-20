@@ -10,11 +10,11 @@
     "predeploy": "vite build",
     "deploy": "gh-pages -d dist "
   },
-   "homepage": "https://Boppk-lm.github.io/my-blog",
+  "homepage": "https://Boppk-lm.github.io/my-blog",
   "dependencies": {
     "pinia": "^3.0.3",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
