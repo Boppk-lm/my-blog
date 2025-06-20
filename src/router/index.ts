@@ -1,7 +1,6 @@
 import { createRouter,createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import PostListView from "../views/PostListView.vue";
-import NotFoundView from "../views/NotFoundView.vue";
 const routes = [
     {
         path:'/',
