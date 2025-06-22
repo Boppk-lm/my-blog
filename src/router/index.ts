@@ -1,17 +1,31 @@
-import { createRouter,createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import PostListView from "../views/PostListView.vue";
+import MeView from "../views/layout/MeView.vue";
+import PostListView from "../views/layout/PostListView.vue";
+import LogView from "../views/layout/LogView.vue";
 const routes = [
     {
-        path:'/',
-        name:'home',
-        component:HomeView
+        path: '/',
+        component: HomeView,
+        children: [
+               {
+                path: '',
+                name: 'PostList',
+                component: PostListView
+            },
+            {
+                path: '/me',
+                name: 'Me',
+                component: MeView
+            },
+              {
+                path: '/log',
+                name: 'Log',
+                component: LogView
+            },
+        ]
     },
-      {
-        path:'/Post',
-        name:'posts',
-        component:PostListView
-    },
+
     // {
     //     path:'*',
     //     name:'notfound',
@@ -19,7 +33,7 @@ const routes = [
     // }
 ]
 const router = createRouter({
-    history:createWebHistory(import.meta.env.BASE_URL),
+    history: createWebHistory(import.meta.env.BASE_URL),
     routes
 })
 export default router

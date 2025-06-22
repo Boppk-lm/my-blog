@@ -1,11 +1,9 @@
 <template>
-        404!!!
+  <router-view ></router-view>
 </template>
-    
-<script setup lang='ts'>
-    
-</script>
-    
-<style lang="less" scoped>
 
+<script setup lang='ts'>
+</script>
+
+<style lang="less" scoped>
 </style>

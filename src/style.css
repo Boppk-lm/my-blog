@@ -1,11 +1,14 @@
 
-/* 修复所有层级的高度问题 */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-}
 
+}
+/* 隐藏滚动条 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
 /* 全局使用border-box更合理 */
 *, *::before, *::after {
   box-sizing: border-box;
