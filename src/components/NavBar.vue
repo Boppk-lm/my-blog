@@ -1,49 +1,32 @@
 <template>
-  <!-- 回到顶部 -->
-  <el-backtop :bottom="100" :visibility-height="100" :right="5">
-    <div style="
-        height: 100%;
-        width: 100%;
-        background-color: var(--el-bg-color-overlay);
-        box-shadow: var(--el-box-shadow-lighter);
-        text-align: center;
-        line-height: 40px;
-        border-radius: 10%;
-        color: #666666;
-      ">
-      <el-icon>
-        <ArrowUpBold />
-      </el-icon>
-    </div>
-  </el-backtop>
-  <el-menu mode="horizontal" class="el-menu-demo" :ellipsis="false" default-active="/" router
-    background-color="transparent" text-color="#fff" active-text-color="#fff">
-     <!-- logo -->
-    <el-menu-item index="/" class="no-underline">
-      <img style="width: 180px" src="../assets/logo.png" alt="logo" />
-    </el-menu-item>
-    <!-- 首页 -->
-    <el-menu-item index="/">
-      <el-icon size="25">
-        <SvgIcon iconName="icon-zhuye-copy"></SvgIcon>
-      </el-icon>
-      首页
-    </el-menu-item>
-    <!-- 开发日志 -->
-    <el-menu-item index="log">
-      <el-icon size="25">
-        <SvgIcon iconName="icon-ColourSystemManagement-copy"></SvgIcon>
-      </el-icon>
-      开发日志
-    </el-menu-item>
-       <!-- 关于我 -->
-    <el-menu-item index="me">
-      <el-icon size="25">
-        <SvgIcon iconName="icon-wogerenziliao-copy"></SvgIcon>
-      </el-icon>
-      关于我
-    </el-menu-item>
-  </el-menu>
+    <el-menu mode="horizontal" class="el-menu-demo" :ellipsis="false" default-active="/" router
+      background-color="transparent" text-color="#fff" active-text-color="#fff">
+      <!-- logo -->
+      <el-menu-item index="/" class="no-underline">
+        <img style="width: 180px" src="../assets/logo.png" alt="logo" />
+      </el-menu-item>
+      <!-- 首页 -->
+      <el-menu-item index="/">
+        <el-icon size="25">
+          <SvgIcon iconName="icon-zhuye-copy"></SvgIcon>
+        </el-icon>
+        首页
+      </el-menu-item>
+      <!-- 开发日志 -->
+      <el-menu-item index="log">
+        <el-icon size="25">
+          <SvgIcon iconName="icon-ColourSystemManagement-copy"></SvgIcon>
+        </el-icon>
+        开发日志
+      </el-menu-item>
+      <!-- 关于我 -->
+      <el-menu-item index="me">
+        <el-icon size="25">
+          <SvgIcon iconName="icon-wogerenziliao-copy"></SvgIcon>
+        </el-icon>
+        关于我
+      </el-menu-item>
+    </el-menu>
 </template>
 
 <script setup lang='ts'>
