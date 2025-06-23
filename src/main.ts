@@ -13,4 +13,14 @@ app.use(pinia)
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 app.use(ElementPlus)
+// 引入ico图标
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
+import SvgIcon from './components/iconfont/SvgIcon.vue'
+import './assets/iconfont/iconfont.js'
+app.component('SvgIcon', SvgIcon)
+// 引入字体
+import "./assets/fonts/font.css"
 app.mount('#app')
