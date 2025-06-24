@@ -40,8 +40,8 @@
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
-import { ref } from 'vue';
-const active = ref('/')  //控制导航栏地址
+import { ref } from 'vue'
+const active = ref('me')  //控制导航栏地址
 //导入封装控制导航栏的函数
 import useScrollHide from '../composables/useScrollHide';
 const {isHidden} = useScrollHide()
@@ -51,6 +51,6 @@ const {isHidden} = useScrollHide()
 @import '../less/nav.less';
 // 控制背景
 .el-header {
-  background-image: url('../assets/home_bg.jpg');
+  background-image: url('../assets/me_bg.jpg');
 }
 </style>

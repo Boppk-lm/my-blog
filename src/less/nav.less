@@ -1,0 +1,28 @@
+// 公共导航栏隐藏控制
+.el-header {
+  padding: 0 !important;
+  background-size: cover;       /* 图片覆盖整个区域 */
+  background-position: center;  /* 图片居中 */
+  background-repeat: no-repeat; /* 禁止重复 */
+  height: 700px;               /* 建议设置固定高度 */
+}
+.el-main { 
+   padding: 0 !important;
+}
+.el-footer {
+    padding: 0 !important;
+}
+.nav-bar {
+  position: fixed; /* 固定在页面最顶部 */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999; /* 保证浮在最上层 */
+  transition: transform 0.5s ease, background-color 0.5s ease; /* 平滑动画 */
+  background-color: rgba(0, 0, 0, 0); /* 初始透明 */
+}
+
+.nav-bar.hide {
+  transform: translateY(-100%); /* 向上滑动自己，把导航栏“藏起来” */
+    background-color: rgba(0, 0, 0, 0.3); /* 向上收缩时，渐显出灰色背景 */
+}

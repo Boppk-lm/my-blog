@@ -1,5 +1,5 @@
 <template>
-        开发日志
+        loglist
 </template>
     
 <script setup lang='ts'>

@@ -1,5 +1,5 @@
 <template>
-    <el-menu mode="horizontal" class="el-menu-demo" :ellipsis="false" default-active="/" router
+    <el-menu mode="horizontal" class="el-menu-demo" :ellipsis="false" :default-active="active" router
       background-color="transparent" text-color="#fff" active-text-color="#fff">
       <!-- logo -->
       <el-menu-item index="/" class="no-underline">
@@ -30,6 +30,8 @@
 </template>
 
 <script setup lang='ts'>
+import {defineProps} from 'vue'
+defineProps(['active']) //接收父传来的地址
 </script>
 
 <style lang="less" scoped>
