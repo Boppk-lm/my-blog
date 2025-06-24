@@ -1,4 +1,4 @@
-//控制导航栏的显示与隐藏
+//公共控制导航栏的显示与隐藏的方法
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 export default function useScrollHide() {
     const isHidden = ref(false) // 控制导航栏显示或隐藏

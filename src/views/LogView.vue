@@ -10,11 +10,11 @@
     </el-header>
     <el-main>
       <!-- 页面显示 -->
-      <PageContent></PageContent>
+      <PageContent/>
     </el-main>
     <el-footer>
       <!-- 页尾 -->
-      <Footer></Footer>
+       <Footer/>
     </el-footer>
   </el-container>
   <!-- 回到顶部 -->
