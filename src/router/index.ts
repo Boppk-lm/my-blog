@@ -6,6 +6,8 @@ import LogView from "../views/LogView.vue";
 import LogListView from "../views/layout/LogListView.vue";
 import MeListView from "../views/layout/MeListView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
+import PostView from "../views/PostView.vue";
+import PostContent from "../views/layout/PostContent.vue";
 const routes = [
     {
         //首页
@@ -42,6 +44,19 @@ const routes = [
                 path: '',
                 name: ' MeList',
                 component: MeListView
+            },
+        ]
+    },
+    //文章
+      {
+        path: '/post',
+        name: 'Post',
+        component: PostView,
+        children: [
+            {
+                path: '',
+                name: 'PostContent',
+                component: PostContent
             },
         ]
     },
