@@ -31,7 +31,7 @@
          <el-avatar :size="32"
         :src="nameAvatar"
       />
-      <span>lvdameng</span>
+      <span>南下</span>
        </div>
        <!-- 日期 -->
        <div class="date">
