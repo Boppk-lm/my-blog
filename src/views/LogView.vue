@@ -7,6 +7,13 @@
     </div>
     <el-header>
       <!-- 背景图 -->
+            <!-- 泡泡容器 -->
+          <div class="bubble-container"></div>
+       <!-- 文字容器 -->
+         <div class="header-content">
+            <h1>我的开发日志</h1>
+  <p>别赶路，感受路！</p>
+  </div>
     </el-header>
     <el-main>
       <!-- 页面显示 -->
@@ -45,12 +52,20 @@ const active = ref('log')  //控制导航栏地址
 //导入封装控制导航栏的函数
 import useScrollHide from '../composables/useScrollHide';
 const {isHidden} = useScrollHide()
+//导入封装泡泡效果
+import useBubbleHide from '../composables/useBubbleHide';
+useBubbleHide()
 </script>
 
 <style lang="less" scoped>
 @import '../less/nav.less';
 // 控制背景
 .el-header {
-  background-image: url('../assets/log_bg.jpg');
+  background-image: url('../assets/log_bg.png');
 }
+</style>
+
+<!-- 非 scoped 样式：用于动态插入的泡泡 -->
+<style lang="less">
+@import '../less/bubble.less';
 </style>

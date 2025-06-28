@@ -1,6 +1,7 @@
 <template>
         <div class="postlist">
                 <div class="post">
+                        <!-- 文章列表 -->
                         <el-row :gutter="20">
                                 <el-col :span="8">
                                         <div class="grid-content ep-bg-purple">
@@ -23,6 +24,7 @@
                 </div>
                 <div class="my">
                         <el-row>
+                                <!-- 站主 -->
                                 <el-col :span="22">
                                         <div class="grid-content ep-bg-purple">
                                                 <div class="users">
@@ -70,6 +72,7 @@
                                                 </div>
                                         </div>
                                 </el-col>
+                                    <!-- 公告栏 -->
                                 <el-col :span="22">
                                         <div class="grid-content ep-bg-purple" style=" min-height: 150px;">
                                                 <div class="noticeboard">
@@ -84,6 +87,9 @@
                                                         </div>
                                                 </div>
                                         </div>
+                                </el-col>
+                                <el-col :span="22">
+                                          <div class="grid-content ep-bg-purple" style=" min-height: 130px;"></div>
                                 </el-col>
                         </el-row>
 
@@ -158,7 +164,10 @@ import List from '../../components/post/List.vue';
                         .cover {
                                 position: relative;
                                 height: 150px;
-                                background-image: url('../../assets/me_bg.jpg');
+                                background-image: url('../../assets/me_bg.png');
+                                  background-size: cover;       /* 图片覆盖整个区域 */
+  background-position: center;  /* 图片居中 */
+  background-repeat: no-repeat; /* 禁止重复 */
 
                                 .avatar-wrapper {
                                         position: absolute;

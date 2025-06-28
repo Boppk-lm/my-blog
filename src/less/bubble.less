@@ -1,0 +1,19 @@
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(0.5); // 从下方开始，初始缩小
+    opacity: 0.7;                        // 半透明开始
+  }
+  100% {
+    transform: translateY(-800px) scale(1.2); // 上升 800px，稍微变大
+    opacity: 0;                               // 最终变成透明
+  }
+}
+
+.bubble {
+  position: absolute;        // 脱离文档流，可以自由定位
+  bottom: -100px;            // 初始在屏幕底部外面
+  border-radius: 50%;        // 变成圆形
+  background: rgba(255, 255, 255, 0.3); // 半透明白色
+  animation: rise 6s ease-in infinite;  // 启动 `rise` 动画，循环播放
+  pointer-events: none;     // 禁止鼠标事件（不会干扰点击）
+}
