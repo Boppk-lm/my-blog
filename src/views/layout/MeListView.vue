@@ -58,9 +58,9 @@
                                                         </a>
                                                         <span> 免费测试人格</span>
                                                 </div>
-                                                  <div class="selfhood-cover">
-                                                <img src="../../assets/selfhood.png" alt="">
-                                        </div>
+                                                <div class="selfhood-cover">
+                                                        <img src="../../assets/selfhood.png" alt="">
+                                                </div>
                                         </div>
                                 </div>
                         </el-col>
@@ -68,78 +68,119 @@
                         <el-col :span="12">
                                 <div class="grid-content ep-bg-purple" style="min-height: 196px;">
                                         <div class="demo-progress">
-                                            
+
                                                 <div class="progress" style="margin-top: 4px;">
-                                                            <el-progress :percentage="64" :text-inside="true" class="flash-progress"  striped striped-flow
-                                                        :show-text="false" />
+                                                        <el-progress :percentage="64" :text-inside="true"
+                                                                class="flash-progress" striped striped-flow
+                                                                :show-text="false" />
                                                         <div class="title">
-                                                        <span>外向 64%</span>
-                                                        <span>内向 36%</span>
+                                                                <span>外向 64%</span>
+                                                                <span>内向 36%</span>
                                                         </div>
                                                 </div>
-                                                   <div class="progress">
-                                                            <el-progress :percentage="51" :text-inside="true" striped striped-flow color="#e4ae3a"
-                                                        :show-text="false" />
+                                                <div class="progress">
+                                                        <el-progress :percentage="51" :text-inside="true" striped
+                                                                striped-flow color="#e4ae3a" :show-text="false" />
                                                         <div class="title">
-                                                        <span>天马行空 51%</span>
-                                                        <span>求真务实 49%</span>
+                                                                <span>天马行空 51%</span>
+                                                                <span>求真务实 49%</span>
                                                         </div>
                                                 </div>
-                                                   <div class="progress">
-                                                            <el-progress :percentage="57" :text-inside="true" striped striped-flow color="#33a474"
-                                                        :show-text="false" />
+                                                <div class="progress">
+                                                        <el-progress :percentage="57" :text-inside="true" striped
+                                                                striped-flow color="#33a474" :show-text="false" />
                                                         <div class="title">
-                                                        <span>理性思考 57%</span>
-                                                        <span>情感细腻 43%</span>
+                                                                <span>理性思考 57%</span>
+                                                                <span>情感细腻 43%</span>
                                                         </div>
                                                 </div>
-                                                   <div class="progress">
-                                                            <el-progress :percentage="53" :text-inside="true" striped striped-flow color="#88619a"
-                                                        :show-text="false" />
+                                                <div class="progress">
+                                                        <el-progress :percentage="53" :text-inside="true" striped
+                                                                striped-flow color="#88619a" :show-text="false" />
                                                         <div class="title">
-                                                        <span>运筹帷幄 53%</span>
-                                                        <span>随机应变 47%</span>
+                                                                <span>运筹帷幄 53%</span>
+                                                                <span>随机应变 47%</span>
                                                         </div>
                                                 </div>
-                                                   <div class="progress">
-                                                            <el-progress :percentage="56" :text-inside="true" striped striped-flow color="#f25e62"
-                                                        :show-text="false" />
+                                                <div class="progress">
+                                                        <el-progress :percentage="56" :text-inside="true" striped
+                                                                striped-flow color="#f25e62" :show-text="false" />
                                                         <div class="title">
-                                                        <span>自信果断 56%</span>
-                                                        <span>情绪易波动 44%</span>
+                                                                <span>自信果断 56%</span>
+                                                                <span>情绪易波动 44%</span>
                                                         </div>
                                                 </div>
-                                            
+
                                         </div>
                                 </div>
                         </el-col>
                 </el-row>
-                <!-- 我的爱好 -->
+                <!-- 关于我的 -->
                 <el-row :gutter="20">
-                              <el-col :span="12">
-                                  <div class="grid-content ep-bg-purple" style="min-height: 196px;"></div>
-                              </el-col>
-                                 <el-col :span="12">
-                                  <div class="grid-content ep-bg-purple" style="min-height: 350px;"></div>
-                              </el-col>
+                        <!-- 想说的话 -->
+                        <el-col :span="16">
+                                <div class="grid-content ep-bg-purple" style="min-height: 300px;">
+                                </div>
+                        </el-col>
+                        <!-- 标签云 -->
+                        <el-col :span="8">
+                                <div class="grid-content ep-bg-purple" style="min-height: 300px; display: flex;">
+                                        <div class="tag-cloud" id="tagcloud">
+                                        </div>
+                                </div>
+                        </el-col>
                 </el-row>
         </div>
 </template>
 
 <script setup lang='ts'>
+import { onMounted } from 'vue';
+// 引入标签云
+import TagCloud from 'TagCloud'
+onMounted(() => {
+        const container = document.querySelector('#tagcloud')
+        const texts = [
+                'Vue', 'JavaScript', 'HTML', 'CSS', 'TypeScript', 'Pinia', 'GitHub', 'Git',
+                '博客', '前端', '动漫', '小说', '理想主义'
+        ]
+
+        const options = {
+                radius: 140,
+                maxSpeed: 'fast',
+                initSpeed: 'slow',
+                direction: 135,
+                keep: true
+        }
+        // @ts-ignore 跳过检查
+        TagCloud(container, texts, options)
+          // 使用 MutationObserver 监听 <span> 是否出现
+  const observer = new MutationObserver(() => {
+    const spans = document.querySelectorAll('#tagcloud span')
+    if (spans.length > 0) {
+      spans.forEach(span => {
+        const rand = (Math.random() * 0.5 + 0.5).toFixed(2)
+        span.setAttribute('style', `--scale: ${rand}`)
+      })
+      observer.disconnect() // 完成后停止监听
+    }
+  })
+
+  observer.observe(container!, { childList: true, subtree: true })
+})
 </script>
 
 <style lang="less" scoped>
-
 // 流动条动画变慢
 @keyframes slowFlow {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 60px 0;
-  }
+        0% {
+                background-position: 0 0;
+        }
+
+        100% {
+                background-position: 60px 0;
+        }
 }
+
 .melist {
         .el-row {
                 margin-bottom: 20px;
@@ -206,28 +247,55 @@
                         gap: 8px;
                         /* 元素之间的间距 */
                 }
-                  .selfhood-cover{
+
+                .selfhood-cover {
                         top: -12px;
                         right: 0;
-                position: absolute;
-                img {
-                          height: 200px;
+                        position: absolute;
+
+                        img {
+                                height: 200px;
+                        }
                 }
         }
-        }
+
         .demo-progress {
-                    .progress {
+                .progress {
                         margin-bottom: 8px;
-                .title {
-                        display: flex;
-                        justify-content: space-between;
-                        font-size: 14px;
+
+                        .title {
+                                display: flex;
+                                justify-content: space-between;
+                                font-size: 14px;
+                        }
+
+                        ::v-deep(.el-progress-bar__inner) {
+                                animation: slowFlow 8s linear infinite !important;
+                        }
                 }
-                  ::v-deep(.el-progress-bar__inner) {
-      animation: slowFlow 8s linear infinite !important;
-    }
         }
+        // 标签云
+        .tag-cloud {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+
+                :deep(span) {
+                        margin: 8px;
+                        font-size: calc(14px + 6 * var(--scale));
+                        font-weight: 500;
+                        color: #444;
+                        transition: transform 0.3s ease, color 0.3s ease;
+                        cursor: pointer;
+                        --scale: 0.5;
+                }
+
+                :deep(span:hover) {
+                        color: #1976d2;
+                        transform: scale(1.2);
+                }
         }
-    
 }
 </style>

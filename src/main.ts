@@ -24,3 +24,4 @@ app.component('SvgIcon', SvgIcon)
 // 引入字体
 import "./assets/fonts/font.css"
 app.mount('#app')
+
