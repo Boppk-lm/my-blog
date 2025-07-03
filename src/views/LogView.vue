@@ -11,7 +11,7 @@
           <div class="bubble-container"></div>
        <!-- 文字容器 -->
          <div class="header-content">
-            <h1>我的开发日志</h1>
+            <h1>我的开发历程</h1>
   <p>别赶路，感受路！</p>
   </div>
     </el-header>

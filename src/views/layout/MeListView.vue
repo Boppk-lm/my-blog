@@ -8,7 +8,7 @@
                                         style="background: linear-gradient(to right, #BA68C8, #FFB74D);">
                                         <div class="wecome">
                                                 <div class="wecome-title">欢迎来到我的博客</div>
-                                                <span style="color: #F8BBD0;">一个励志成为前端开发工程师的小男孩</span>
+                                                <span style="color: #F8BBD0;">一个热爱前端的小男孩</span>
                                                 <el-icon size="96" class="icon">
                                                         <SvgIcon iconName="icon-caihong1"></SvgIcon>
                                                 </el-icon>
@@ -120,6 +120,17 @@
                         <!-- 想说的话 -->
                         <el-col :span="16">
                                 <div class="grid-content ep-bg-purple" style="min-height: 300px;">
+                                <div class="talk">
+                                            <div class="decoration top-left">✍️</div>
+        <div class="decoration bottom-right">🌍</div>
+        
+        <div class="welcome-text">嗨，你好呀！</div>
+        
+        <p>欢迎光临我的小天地！很高兴你能来到这里。</p>
+        <p>这里主要分享 [我的编程学习笔记/旅行见闻/读书心得/生活随笔]。</p>
+        <p>希望你能找到感兴趣的内容，也欢迎随时交流~<span class="emoji">😊</span></p>
+        
+                                </div>
                                 </div>
                         </el-col>
                         <!-- 标签云 -->
@@ -201,6 +212,7 @@ onMounted(() => {
                 position: relative;
 
                 .wecome-title {
+                             pointer-events: none;
                         margin-bottom: 5px;
                         font-size: 32px;
                         font-weight: 700;
@@ -273,6 +285,60 @@ onMounted(() => {
                                 animation: slowFlow 8s linear infinite !important;
                         }
                 }
+        }
+        .talk {
+            position: relative;
+            padding: 25px;
+            font-size: 24px;
+            background: white;
+            text-align: center;
+            line-height: 1.6;
+            color: #333;
+            // 装饰元素
+            .decoration {
+                     pointer-events: none;
+                position: absolute;
+                opacity: 0.1;
+                font-size: 80px;
+                z-index: 0;
+                
+                &.top-left {
+                    top: -30px;
+                    left: -10px;
+                }
+                
+                &.bottom-right {
+                    bottom: -30px;
+                    right: -10px;
+                }
+            }
+            
+            // 欢迎标题
+            .welcome-text {
+                     pointer-events: none;
+                font-size: 34px;
+                font-weight: bold;
+                margin-bottom: 15px;
+                background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            
+            // 表情
+            .emoji {
+                font-size: 32px;
+                display: inline-block;
+                margin: 0 4px;
+            }
+            
+            
+            p {
+                margin: 10px 0;
+                font-size: 20px;
+            }
+            
         }
         // 标签云
         .tag-cloud {

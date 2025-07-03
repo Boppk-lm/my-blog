@@ -22,7 +22,10 @@ a:hover {
 *, *::before, *::after {
   box-sizing: border-box;
 }
-
+/* 部分标签禁用所有鼠标事件	 */
+span,p,h4,h1 {
+        pointer-events: none;
+}
 #app {
   display: flex; 
   width: 100%;

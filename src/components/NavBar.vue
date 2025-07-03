@@ -12,12 +12,12 @@
         </el-icon>
         首页
       </el-menu-item>
-      <!-- 开发日志 -->
+      <!-- 开发历程 -->
       <el-menu-item index="log">
         <el-icon size="25">
           <SvgIcon iconName="icon-ColourSystemManagement-copy"></SvgIcon>
         </el-icon>
-        开发日志
+        开发历程
       </el-menu-item>
       <!-- 关于我 -->
       <el-menu-item index="me">

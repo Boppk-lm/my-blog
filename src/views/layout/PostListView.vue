@@ -88,8 +88,28 @@
                                                 </div>
                                         </div>
                                 </el-col>
+                                <!-- 微信二维码 -->
                                 <el-col :span="22">
-                                          <div class="grid-content ep-bg-purple" style=" min-height: 130px;"></div>
+                                          <div class="grid-content ep-bg-purple" style=" min-height: 120px;">
+                                                <div class="weixin">
+                                                        <div class="QR"></div>
+                                                        <div class="search">
+                                                                <div class="top">
+                                                                        <img src="../../assets/weixin.png" alt="">
+                                                                        <span>微信搜一搜</span>
+                                                                </div>
+                                                                <div class="bottom">
+                                                                        <span>
+                                                                                   <el-icon :size="18" color="#fff">
+
+                                <Search/>
+    </el-icon>
+                                                                        </span>
+                                                                        <span>南下</span>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                          </div>
                                 </el-col>
                         </el-row>
 
@@ -164,11 +184,12 @@ import List from '../../components/post/List.vue';
                         .cover {
                                 position: relative;
                                 height: 150px;
-                                background-image: url('../../assets/me_bg.png');
-                                  background-size: cover;       /* 图片覆盖整个区域 */
-  background-position: center;  /* 图片居中 */
-  background-repeat: no-repeat; /* 禁止重复 */
-
+                           
+                                background-image: url('../../assets/blog_meme.gif');
+                                background-size: 90%;
+                                //   background-size: cover;       /* 图片覆盖整个区域 */
+                                 background-position: center;  /* 图片居中 */
+                                background-repeat: no-repeat; /* 禁止重复 */
                                 .avatar-wrapper {
                                         position: absolute;
                                         top: 100px;
@@ -215,6 +236,7 @@ import List from '../../components/post/List.vue';
                                 align-items: center;
 
                                 .count {
+                                        pointer-events: none;
                                         font-size: 18px;
                                         margin-top: 10px;
                                         width: 100%;
@@ -228,8 +250,9 @@ import List from '../../components/post/List.vue';
                 //公告栏
                 .noticeboard {
                         padding: 20px;
-
+                             pointer-events: none;
                         .title {
+                                
                                 display: flex;
                                 align-items: center;
                                 font-weight: 700;
@@ -241,6 +264,56 @@ import List from '../../components/post/List.vue';
                         .content {
                                 font-size: 15px;
                                 margin-top: 10px;
+                        }
+                }
+                //微信
+                .weixin {
+                        display: flex;
+                        padding: 20px;
+                        .QR {
+                                margin-left: 15px;
+                                width: 80px;
+                                height: 80px;
+                                background-image: url(../../assets/QR.png);
+                                      background-size: cover;       /* 图片覆盖整个区域 */
+                                 background-position: center;  /* 图片居中 */
+                                background-repeat: no-repeat; /* 禁止重复 */
+                        }
+                        .search {
+                                margin-left: 30px;
+                                height: 80px;
+                                .top {
+                                        margin-top: -5px;
+                                        display: flex;
+                                        align-items: center;
+                                        img {
+                                        width: 40px;
+                                        height: 40px;
+                                        }
+                                        span {
+                                                font-family:"YouYuan";
+                                                margin-left: 10px;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                        }
+                                }
+                                .bottom {
+                                        margin-top: 5px;
+                                        width: 100%;
+                                        height: 40px;
+                                        display: flex;
+                                        align-items: center;
+                                        border-radius: 4px;
+                                        background-color: #07c160;
+                                        color: #fff;
+                                        span {
+                                                 display: inline-flex;
+    align-items: center;
+    line-height: 1;
+                                                margin-left: 10px;
+                                                font-size: 18px;
+                                        }
+                                }
                         }
                 }
         }
