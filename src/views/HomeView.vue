@@ -11,7 +11,7 @@
           <div class="bubble-container"></div>
        <!-- 文字容器 -->
          <div class="header-content">
-            <h1>南下</h1>
+            <h1>{{ title}}</h1>
   <p><span ref="typingText"></span></p>
   </div>
     </el-header>
@@ -44,6 +44,7 @@
 </template>
 
 <script setup lang='ts'>
+const name = 'home'
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
@@ -58,11 +59,7 @@ const typingText = ref<null|HTMLElement>(null)
 onMounted(()=>{
   if(typingText.value){
       const typed = new Typed(typingText.value, {
-      strings: [
-         '欢迎来到我的世界~',
-          '一个无趣的人.',
-         '一场没有归期的远行~'
-      ],
+      strings: string ,
       typeSpeed: 100,
       backSpeed: 70,
       backDelay: 1500,
@@ -75,7 +72,11 @@ onMounted(()=>{
     onUnmounted(() => typed.destroy())
   }
 })
- 
+//使用pinia控制标题
+import { useHideStore } from '../stores';
+const hidestore = useHideStore()
+const title = hidestore.TitleMap[name].hide
+const string = hidestore.TitleMap[name].string
 </script>
 
 <style lang="less" scoped>

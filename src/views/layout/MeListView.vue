@@ -59,7 +59,7 @@
                                                         <span> 免费测试人格</span>
                                                 </div>
                                                 <div class="selfhood-cover">
-                                                        <img src="../../assets/selfhood.png" alt="">
+                                                        <img src="../../assets/selfhood.jpg" alt="">
                                                 </div>
                                         </div>
                                 </div>
@@ -262,7 +262,7 @@ onMounted(() => {
 
                 .selfhood-cover {
                         top: -12px;
-                        right: 0;
+                        right: -25px;
                         position: absolute;
 
                         img {

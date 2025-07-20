@@ -11,8 +11,8 @@
           <div class="bubble-container"></div>
        <!-- 文字容器 -->
          <div class="header-content">
-            <h1>我的文章</h1>
-  <p>人性的背后是白云苍狗~</p>
+            <h1>{{ title }}</h1>
+  <p>{{ string }}</p>
   </div>
     </el-header>
     <el-main>
@@ -44,6 +44,7 @@
 </template>
 
 <script setup lang='ts'>
+const name = 'post'
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
@@ -55,6 +56,11 @@ const {isHidden} = useScrollHide()
 //导入封装泡泡效果
 import useBubbleHide from '../composables/useBubbleHide';
 useBubbleHide()
+//使用pinia控制标题
+import { useHideStore } from '../stores';
+const hidestore = useHideStore()
+const title = hidestore.TitleMap[name].hide
+const string = hidestore.TitleMap[name].string[0]
 </script>
 
 <style lang="less" scoped>
