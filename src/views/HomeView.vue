@@ -7,8 +7,7 @@
     </div>
     <el-header>
       <!-- 背景图 -->
-       <!-- 泡泡容器 -->
-          <div class="bubble-container"></div>
+       <!-- 流星容器 -->
        <!-- 文字容器 -->
          <div class="header-content">
             <h1>{{ title}}</h1>
@@ -48,7 +47,7 @@ const name = 'home'
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
-import { ref,onMounted,onUnmounted} from 'vue';
+import { ref,onMounted,onUnmounted, reactive} from 'vue';
 const active = ref('/')  //控制导航栏地址
 //导入封装控制导航栏的函数
 import useScrollHide from '../composables/useScrollHide';
@@ -73,10 +72,11 @@ onMounted(()=>{
   }
 })
 //使用pinia控制标题
-import { useHideStore } from '../stores';
+import {useHideStore}   from '../stores';
 const hidestore = useHideStore()
-const title = hidestore.TitleMap[name].hide
-const string = hidestore.TitleMap[name].string
+const title = ref(hidestore.TitleMap[name].hide)
+const string = reactive(hidestore.TitleMap[name].string)
+
 </script>
 
 <style lang="less" scoped>
@@ -85,4 +85,8 @@ const string = hidestore.TitleMap[name].string
 .el-header {
   background-image: url('../assets/home_bg.png');
 }
+
+
+
 </style>
+

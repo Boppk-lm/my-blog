@@ -4,7 +4,7 @@
     <div class="list">
     <!-- 封面 -->
    <div class="cover" @click="navigate">
-    <img src="../../assets/cover/cover1.png" alt="">
+    <img :src="images[`../../assets/cover/${ListMap.cover}`]" alt="">
       <div class="mask">
             <el-icon size="25">
           <SvgIcon iconName="icon-dianji"></SvgIcon>
@@ -15,14 +15,14 @@
     <div class="box">
       <!-- 标题 -->
       <div class="title"  @click="navigate">
-        《lvdamengの博客》系统技术解析:纯静态博客
+        {{ ListMap.title }}
       </div>
       <!-- 简介 -->
       <div class="content">
              <el-icon size="22">
           <SvgIcon iconName="icon-yinhao"></SvgIcon>
         </el-icon>
-         <span>《lvdamengの博客》是一款基于前后端分离架构的现代化博客平台,致力于为内容创作者和读者提供安全、便捷、功能丰富的博客服务。项目采用 Node.js 作为后端开发语言，搭配轻量级框架 effic，前端基于 Vue2 实现用户交互（前端代码未在本目录中）。系统集内容管理、用户互动、数据存储、第三方服务集成等功能于一体，支持多端访问，尤其适合个人博主、企业资讯发布等场景。 </span>
+         <span>{{ ListMap.content }} </span>
       </div>
     <!-- 文章信息 -->
       <div class="info">
@@ -31,14 +31,14 @@
          <el-avatar :size="32"
         :src="nameAvatar"
       />
-      <span>南下</span>
+      <span> {{ ListMap.name }}</span>
        </div>
        <!-- 日期 -->
        <div class="date">
            <el-icon size="20">
           <SvgIcon iconName="icon-riqi1"></SvgIcon>
         </el-icon>
-      <span>2025-6-26</span>
+      <span>   {{ ListMap.date }}</span>
        </div>
       </div>
       <div class="taglist">
@@ -46,7 +46,7 @@
                <el-icon size="20">
           <SvgIcon iconName="icon-weibiaoti-_huabanfuben"></SvgIcon>
         </el-icon>
-           前端开发日志
+         {{ ListMap.tag }}
         </div>
       </div>
     </div>
@@ -57,6 +57,11 @@
 
 <script setup lang='ts'>
 import nameAvatar  from '@/assets/name.jpg'
+// 动态导入封面
+const images = import.meta.glob('../../assets/cover/*.png', { eager: true, import: 'default' }) as Record<string, string>
+// 接受父组件的元素
+import { defineProps } from 'vue';
+defineProps(['ListMap'])
 </script>
 
 <style lang="less" scoped>

@@ -59,8 +59,8 @@ useBubbleHide()
 //使用pinia控制标题
 import { useHideStore } from '../stores';
 const hidestore = useHideStore()
-const title = hidestore.TitleMap[name].hide
-const string = hidestore.TitleMap[name].string[0]
+const title = ref(hidestore.TitleMap[name].hide)
+const string = ref(hidestore.TitleMap[name].string[0])
 </script>
 
 <style lang="less" scoped>

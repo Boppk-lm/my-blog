@@ -1,24 +1,12 @@
 <template>
         <div class="postlist">
-                <div class="post">
+                <div class="post" >
                         <!-- 文章列表 -->
                         <el-row :gutter="20">
-                                <el-col :span="8">
+                                <el-col :span="8" v-for="item in ListMap" :key="item.id">
                                         <div class="grid-content ep-bg-purple">
-                                                <List />
+                                                <List :ListMap="item" />
                                         </div>
-                                </el-col>
-                                <el-col :span="8">
-                                        <div class="grid-content ep-bg-purple" />
-                                </el-col>
-                                <el-col :span="8">
-                                        <div class="grid-content ep-bg-purple" />
-                                </el-col>
-                                <el-col :span="8">
-                                        <div class="grid-content ep-bg-purple" />
-                                </el-col>
-                                <el-col :span="8">
-                                        <div class="grid-content ep-bg-purple" />
                                 </el-col>
                         </el-row>
                 </div>
@@ -28,8 +16,13 @@
 </template>
 
 <script setup lang='ts'>
+import { reactive } from 'vue';
 import List from '../../components/post/List.vue';
 import My from '../../components/post/My.vue';
+//用pinia控制文章列表
+import { useListStore } from '../../stores';
+const ListStore = useListStore()
+const ListMap = reactive(ListStore.ListMap)
 </script>
 
 <style lang="less" scoped>
