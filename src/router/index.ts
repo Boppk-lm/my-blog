@@ -49,7 +49,7 @@ const routes = [
     },
     //文章
       {
-        path: '/post',
+        path: '/post/:id',
         name: 'Post',
         component: PostView,
         children: [

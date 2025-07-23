@@ -24,7 +24,7 @@
                                                                                 文章
                                                                         </div>
                                                                         <div class="number">
-                                                                                20
+                                                                                {{ listLength }}
                                                                         </div>
                                                                 </div>
                                                                 <div>
@@ -94,12 +94,12 @@
 <script setup lang='ts'>
 import nameAvatar from '@/assets/name.jpg'
 //用pinia控制My部分
-import { useMyStore } from '../../stores';
-import { ref } from 'vue';
+import { useMyStore,useListStore } from '../../stores';
+import { reactive, ref } from 'vue';
 const MyStore = useMyStore()
-const name = ref(MyStore.name)
-const individuality = ref(MyStore.individuality)
-const affiche = ref(MyStore.affiche)
+const listStore = useListStore()
+const listLength = ref(listStore.listLength)
+const {name,individuality,affiche} = reactive(MyStore)
 </script>
 
 <style lang="less" scoped>

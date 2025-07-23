@@ -7,8 +7,8 @@
                                 <div class="grid-content ep-bg-purple"
                                         style="background: linear-gradient(to right, #BA68C8, #FFB74D);">
                                         <div class="wecome">
-                                                <div class="wecome-title">欢迎来到我的博客</div>
-                                                <span style="color: #F8BBD0;">一个热爱前端的小男孩</span>
+                                                <div class="wecome-title">{{ wecome_title }}</div>
+                                                <span style="color: #F8BBD0;">{{ wecome_content }}</span>
                                                 <el-icon size="96" class="icon">
                                                         <SvgIcon iconName="icon-caihong1"></SvgIcon>
                                                 </el-icon>
@@ -22,17 +22,17 @@
                                                 <div>
                                                         <span class="info-title">星座</span>
                                                         <br>
-                                                        <span class="info-content" style="color: #E53935;">白羊</span>
+                                                        <span class="info-content" style="color: #E53935;">{{ constellatory }}</span>
                                                 </div>
                                                 <div>
                                                         <span class="info-title">来自</span>
                                                         <br>
-                                                        <span class="info-content" style="color: #5C6BC0;">江苏</span>
+                                                        <span class="info-content" style="color: #5C6BC0;">{{ from }}</span>
                                                 </div>
                                                 <div>
                                                         <span class="info-title">保持热爱</span>
                                                         <br>
-                                                        <span class="info-content" style="color: #9C27B0;">游戏人间</span>
+                                                        <span class="info-content" style="color: #9C27B0;">{{ like }}</span>
                                                 </div>
                                         </div>
                                 </div>
@@ -120,17 +120,17 @@
                         <!-- 想说的话 -->
                         <el-col :span="16">
                                 <div class="grid-content ep-bg-purple" style="min-height: 300px;">
-                                <div class="talk">
-                                            <div class="decoration top-left">✍️</div>
-        <div class="decoration bottom-right">🌍</div>
-        
-        <div class="welcome-text">嗨，你好呀！</div>
-        
-        <p>欢迎光临我的小天地！很高兴你能来到这里。</p>
-        <p>这里主要分享 [我的编程学习笔记/旅行见闻/读书心得/生活随笔]。</p>
-        <p>希望你能找到感兴趣的内容，也欢迎随时交流~<span class="emoji">😊</span></p>
-        
-                                </div>
+                                        <div class="talk">
+                                                <div class="decoration top-left">✍️</div>
+                                                <div class="decoration bottom-right">🌍</div>
+
+                                                <div class="welcome-text">嗨，你好呀！</div>
+
+                                                <p>欢迎光临我的小天地！很高兴你能来到这里。</p>
+                                                <p>这里主要分享 [我的编程学习笔记/旅行见闻/读书心得/生活随笔]。</p>
+                                                <p>希望你能找到感兴趣的内容，也欢迎随时交流~<span class="emoji">😊</span></p>
+
+                                        </div>
                                 </div>
                         </el-col>
                         <!-- 标签云 -->
@@ -145,15 +145,12 @@
 </template>
 
 <script setup lang='ts'>
-import { onMounted } from 'vue';
+import { onMounted, reactive } from 'vue';
 // 引入标签云
 import TagCloud from 'TagCloud'
 onMounted(() => {
         const container = document.querySelector('#tagcloud')
-        const texts = [
-                'Vue', 'JavaScript', 'HTML', 'CSS', 'TypeScript', 'Pinia', 'GitHub', 'Git',
-                '博客', '前端', '动漫', '小说', '理想主义'
-        ]
+        const texts = tagcloud
 
         const options = {
                 radius: 140,
@@ -164,20 +161,24 @@ onMounted(() => {
         }
         // @ts-ignore 跳过检查
         TagCloud(container, texts, options)
-          // 使用 MutationObserver 监听 <span> 是否出现
-  const observer = new MutationObserver(() => {
-    const spans = document.querySelectorAll('#tagcloud span')
-    if (spans.length > 0) {
-      spans.forEach(span => {
-        const rand = (Math.random() * 0.5 + 0.5).toFixed(2)
-        span.setAttribute('style', `--scale: ${rand}`)
-      })
-      observer.disconnect() // 完成后停止监听
-    }
-  })
+        // 使用 MutationObserver 监听 <span> 是否出现
+        const observer = new MutationObserver(() => {
+                const spans = document.querySelectorAll('#tagcloud span')
+                if (spans.length > 0) {
+                        spans.forEach(span => {
+                                const rand = (Math.random() * 0.5 + 0.5).toFixed(2)
+                                span.setAttribute('style', `--scale: ${rand}`)
+                        })
+                        observer.disconnect() // 完成后停止监听
+                }
+        })
 
-  observer.observe(container!, { childList: true, subtree: true })
+        observer.observe(container!, { childList: true, subtree: true })
 })
+//使用pinia控制关于我 
+import { useMeStore } from '../../stores';
+const MeStore = useMeStore()
+const { wecome_title,wecome_content,constellatory,from,like,tagcloud } = reactive(MeStore)
 </script>
 
 <style lang="less" scoped>
@@ -212,7 +213,7 @@ onMounted(() => {
                 position: relative;
 
                 .wecome-title {
-                             pointer-events: none;
+                        pointer-events: none;
                         margin-bottom: 5px;
                         font-size: 32px;
                         font-weight: 700;
@@ -286,60 +287,63 @@ onMounted(() => {
                         }
                 }
         }
+
         .talk {
-            position: relative;
-            padding: 25px;
-            font-size: 24px;
-            background: white;
-            text-align: center;
-            line-height: 1.6;
-            color: #333;
-            // 装饰元素
-            .decoration {
-                     pointer-events: none;
-                position: absolute;
-                opacity: 0.1;
-                font-size: 80px;
-                z-index: 0;
-                
-                &.top-left {
-                    top: -30px;
-                    left: -10px;
+                position: relative;
+                padding: 25px;
+                font-size: 24px;
+                background: white;
+                text-align: center;
+                line-height: 1.6;
+                color: #333;
+
+                // 装饰元素
+                .decoration {
+                        pointer-events: none;
+                        position: absolute;
+                        opacity: 0.1;
+                        font-size: 80px;
+                        z-index: 0;
+
+                        &.top-left {
+                                top: -30px;
+                                left: -10px;
+                        }
+
+                        &.bottom-right {
+                                bottom: -30px;
+                                right: -10px;
+                        }
                 }
-                
-                &.bottom-right {
-                    bottom: -30px;
-                    right: -10px;
+
+                // 欢迎标题
+                .welcome-text {
+                        pointer-events: none;
+                        font-size: 34px;
+                        font-weight: bold;
+                        margin-bottom: 15px;
+                        background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 }
-            }
-            
-            // 欢迎标题
-            .welcome-text {
-                     pointer-events: none;
-                font-size: 34px;
-                font-weight: bold;
-                margin-bottom: 15px;
-                background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            
-            
-            // 表情
-            .emoji {
-                font-size: 32px;
-                display: inline-block;
-                margin: 0 4px;
-            }
-            
-            
-            p {
-                margin: 10px 0;
-                font-size: 20px;
-            }
-            
+
+
+                // 表情
+                .emoji {
+                        font-size: 32px;
+                        display: inline-block;
+                        margin: 0 4px;
+                }
+
+
+                p {
+                        margin: 10px 0;
+                        font-size: 20px;
+                }
+
         }
+
         // 标签云
         .tag-cloud {
                 display: flex;

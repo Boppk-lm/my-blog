@@ -1,6 +1,6 @@
 <template>
   <!-- custom和v-slot实现可选择跳转 -->
-  <router-link to="/post" custom v-slot="{navigate}">
+  <router-link :to="`/post/${ListMap.id}`" custom v-slot="{navigate}">   <!-- 传入id -->
     <div class="list">
     <!-- 封面 -->
    <div class="cover" @click="navigate">
