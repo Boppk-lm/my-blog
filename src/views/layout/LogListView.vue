@@ -21,10 +21,12 @@
 
 <script setup lang='ts'>
 //使用pinia控制开发历程 
-import { reactive } from 'vue';
 import { useLogStore } from '../../stores';
+import type { LogItem } from '../../stores/LogStore';
 const LogStore = useLogStore()
-const LogMap = reactive(LogStore.LogMap)
+const LogMap:LogItem[]= LogStore.reverseLogMap
+console.log(LogMap);
+
 </script>
 
 <style lang="less" scoped>
