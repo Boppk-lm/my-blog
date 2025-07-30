@@ -7,7 +7,7 @@
                                         <div class="grid-content ep-bg-purple">
                                                 <el-page-header @back="goBack" icon="" title="返回">
                                                         <template #content>
-                                                                <span class="text-large font-600 mr-3"> 技术 </span>
+                                                                <span class="text-large font-600 mr-3"> {{ tag }} </span>
                                                         </template>
                                                         <div class="mt-4 text-sm article-content" v-html="postContent">      
                                                         </div>
@@ -30,6 +30,7 @@ import type { ListItem } from '../../stores/ListStore';
 const route = useRoute()
 const ListStore = useListStore()
 const postContent = ref(''); // 存储文章内容 HTML
+const tag = ref('')
 const article = ref<ListItem>(); // 存储整篇文章对象
 onMounted(()=> {
         // 获取文章的id
@@ -37,6 +38,7 @@ onMounted(()=> {
         article.value = ListStore.ListMap.find(item=> item.id === post_id) 
        if (article.value) {
          postContent.value = article.value.post
+         tag.value = article.value.tag
        }else {
         postContent.value=` <div class="not-found">
         <h3>文章未找到</h3>

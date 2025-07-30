@@ -6,3 +6,9 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "阿里巴巴普惠体 Light";
+    font-weight: 400;
+    src: url("./Alibaba_PuHuiTi_2.0_45_Light_45_Light.ttf");
+    font-display: swap;
+}

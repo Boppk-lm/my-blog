@@ -46,7 +46,7 @@
                <el-icon size="20">
           <SvgIcon iconName="icon-weibiaoti-_huabanfuben"></SvgIcon>
         </el-icon>
-         {{ ListMap.tag }}
+        <span>{{ ListMap.tag }}</span>
         </div>
       </div>
     </div>
@@ -127,6 +127,7 @@ defineProps(['ListMap'])
     font-weight: 700;
     color: #000;
     cursor: pointer;
+       font-family: "阿里巴巴普惠体 Light";
   }
   .title:hover {
     color: #409eff;
@@ -139,6 +140,7 @@ defineProps(['ListMap'])
   -webkit-line-clamp: 2;     /* 显示的行数 */
   overflow: hidden;
   text-overflow: ellipsis; 
+  font-size: 15px;
   }
   .info {
     margin-top: 5px;
@@ -162,6 +164,10 @@ defineProps(['ListMap'])
       display: flex;
       margin-left: 5px;
       cursor: pointer;
+      align-items: center;
+           span {
+      margin-left: 3px; // 让文字和头像之间留一点间距
+    }
     }
   }
   
