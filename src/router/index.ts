@@ -83,7 +83,7 @@ const router = createRouter({
 })
 // 路由守卫
 // 开始加载
-router.beforeEach((to, from, next) => {
+router.beforeEach((_, __, next) => {
   NProgress.start()
   next()
 })

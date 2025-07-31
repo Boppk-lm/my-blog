@@ -124,6 +124,13 @@ export const useLogStore = defineStore('log', {
             "title": "文章内容完善",
             "content": "完善了文章内容，采用 Markdown 格式撰写，提高了内容结构的清晰度和可维护性。",
             "insight": "✍️  Markdown 还挺好用的."
+        },
+        {
+            "id": 16,
+            "date": "2025/07/31",
+            "title": "引入 NProgress 优化路由体验",
+            "content": "集成了 NProgress，实现路由跳转时的顶部加载进度条，提升了页面加载的视觉反馈和用户体验。",
+            "insight": "🚀 加载条一出，瞬间专业感拉满。"
         }
         ]
     }),
