@@ -1,13 +1,24 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
-import MeView from "../views/MeView.vue";
-import PostListView from "../views/layout/PostListView.vue";
-import LogView from "../views/LogView.vue";
-import LogListView from "../views/layout/LogListView.vue";
-import MeListView from "../views/layout/MeListView.vue";
-import NotFoundView from "../views/NotFoundView.vue";
-import PostView from "../views/PostView.vue";
-import PostContent from "../views/layout/PostContent.vue";
+// 引入加载条
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+NProgress.configure({
+  showSpinner: false, // 不显示旋转圈
+  trickleSpeed: 150,  // 加载速度
+  easing: 'ease',     // 动画效果
+  speed: 500,         // 动画持续时间
+})
+// 路由懒加载
+const HomeView = ()=> import("../views/HomeView.vue") ;
+const MeView = () => import("../views/MeView.vue");
+const PostListView = () => import("../views/layout/PostListView.vue");
+const LogView = () => import("../views/LogView.vue");
+const LogListView = () => import("../views/layout/LogListView.vue");
+const MeListView = () => import("../views/layout/MeListView.vue");
+const NotFoundView = () => import("../views/NotFoundView.vue");
+const PostView = () => import("../views/PostView.vue");
+const PostContent = () => import("../views/layout/PostContent.vue");
+// 路由配置
 const routes = [
     {
         //首页
@@ -69,5 +80,16 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes
+})
+// 路由守卫
+// 开始加载
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+})
+
+// 加载完成
+router.afterEach(() => {
+  NProgress.done()
 })
 export default router

@@ -117,6 +117,13 @@ export const useLogStore = defineStore('log', {
             title: '开发历程数据里程碑',
             content: '全面完善博客开发历程的核心数据，为项目提供完整历史档案。',
             insight: '💻 console.log过的青春都作数！'
+        },
+        {
+            "id": 15,
+            "date": "2025/07/30",
+            "title": "文章内容完善",
+            "content": "完善了文章内容，采用 Markdown 格式撰写，提高了内容结构的清晰度和可维护性。",
+            "insight": "✍️  Markdown 还挺好用的."
         }
         ]
     }),

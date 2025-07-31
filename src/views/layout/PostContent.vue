@@ -27,6 +27,9 @@ import { useRoute } from 'vue-router';
 import { useListStore } from '../../stores';
 import { onMounted,ref } from 'vue';
 import type { ListItem } from '../../stores/ListStore';
+//引入 Markdown 渲染器
+import MarkdownIt from 'markdown-it'
+const md = new MarkdownIt()
 const route = useRoute()
 const ListStore = useListStore()
 const postContent = ref(''); // 存储文章内容 HTML
@@ -37,7 +40,8 @@ onMounted(()=> {
         const post_id   = parseInt(route.params.id as string)
         article.value = ListStore.ListMap.find(item=> item.id === post_id) 
        if (article.value) {
-         postContent.value = article.value.post
+        // 把markdown字符串渲染成HTML
+         postContent.value = md.render(article.value.post)
          tag.value = article.value.tag
        }else {
         postContent.value=` <div class="not-found">
