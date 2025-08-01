@@ -81,7 +81,7 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes
 })
-// 路由守卫
+// 路由守卫 网页加载条
 // 开始加载
 router.beforeEach((_, __, next) => {
   NProgress.start()
