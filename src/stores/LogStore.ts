@@ -130,7 +130,21 @@ export const useLogStore = defineStore('log', {
             "date": "2025/07/31",
             "title": "引入 NProgress 优化路由体验",
             "content": "集成了 NProgress，实现路由跳转时的顶部加载进度条，提升了页面加载的视觉反馈和用户体验。",
-            "insight": "🚀 加载条一出，瞬间专业感拉满。"
+            "insight": "🚀 加载条一出，专业感瞬间拉满。"
+        },
+        {
+            "id": 17,
+            "date": "2025/08/01",
+            "title": "更换自定义域名",
+            "content": "完成了博客的自定义域名更改设置，确保访问地址的个性化和便捷性。",
+            "insight": "😋 这下子 就更像一个网站了~"
+        },
+        {
+            "id": 18,
+            "date": "2025/08/02",
+            "title": "使用Cloudflare实现CDN优化",
+            "content": "通过配置Cloudflare，实现了网站的CDN加速，提升了页面加载速度和访问稳定性，特别是对国内用户体验有明显改善。",
+            "insight": "⚡ 好像雀氏变快了点！"
         }
         ]
     }),
