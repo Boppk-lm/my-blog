@@ -24,6 +24,10 @@ export const useHideStore = defineStore('hide', {
       post:    {
         hide:'我的文章',
         string:['人性的背后是白云苍狗~']
+      },
+         class:    {
+        hide:'文章分类',
+        string:['世界那么大，总有些情绪想安放~']
       }
     }
   }),

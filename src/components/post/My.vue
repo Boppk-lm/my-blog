@@ -40,7 +40,7 @@
                                                                                 分类
                                                                         </div>
                                                                         <div class="number">
-                                                                                0
+                                                                                {{ tagLength }}
                                                                         </div>
                                                                 </div>
                                                         </div>
@@ -95,10 +95,11 @@
 import nameAvatar from '@/assets/name.jpg'
 //用pinia控制My部分
 import { useMyStore,useListStore } from '../../stores';
-import { reactive, ref } from 'vue';
+import { reactive } from 'vue';
+import { storeToRefs } from 'pinia'
 const MyStore = useMyStore()
 const listStore = useListStore()
-const listLength = ref(listStore.listLength)
+const { listLength, tagLength } = storeToRefs(listStore)
 const {name,individuality,affiche} = reactive(MyStore)
 </script>
 

@@ -18,6 +18,8 @@ const MeListView = () => import("../views/layout/MeListView.vue");
 const NotFoundView = () => import("../views/NotFoundView.vue");
 const PostView = () => import("../views/PostView.vue");
 const PostContent = () => import("../views/layout/PostContent.vue");
+const ClassView = ()=> import("../views/ClassView.vue") ;
+const ClassList = () => import("../views/layout/ClassListView.vue");
 // 路由配置
 const routes = [
     {
@@ -68,6 +70,19 @@ const routes = [
                 path: '',
                 name: 'PostContent',
                 component: PostContent
+            },
+        ]
+    },
+        //分类
+      {
+        path: '/class/:id',
+        name: 'Class',
+        component: ClassView,
+        children: [
+            {
+                path: '',
+                name: 'ClassList',
+                component: ClassList
             },
         ]
     },

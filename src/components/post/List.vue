@@ -41,8 +41,9 @@
       <span>   {{ ListMap.date }}</span>
        </div>
       </div>
+      <!-- 标签 -->
       <div class="taglist">
-        <div class="tag">
+        <div class="tag" @click="goToClass(ListMap.tagId)">
                <el-icon size="20">
           <SvgIcon iconName="icon-weibiaoti-_huabanfuben"></SvgIcon>
         </el-icon>
@@ -62,6 +63,12 @@ const images = import.meta.glob('../../assets/cover/*.png', { eager: true, impor
 // 接受父组件的元素
 import { defineProps } from 'vue';
 defineProps(['ListMap'])
+// 跳转到分类页面
+import { useRouter } from 'vue-router';
+const router = useRouter()
+function goToClass(tagId:number) {
+router.push(`/class/${tagId}`)
+}
 </script>
 
 <style lang="less" scoped>
@@ -165,6 +172,16 @@ defineProps(['ListMap'])
       margin-left: 5px;
       cursor: pointer;
       align-items: center;
+      transition: all 0.3s ease;
+      // 默认状态
+    background-color: #f2f2f2;
+      // 悬浮状态
+    &:hover {
+      background-color: #409eff1a; 
+      color: #409eff;
+      // transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
            span {
       margin-left: 3px; // 让文字和头像之间留一点间距
     }

@@ -12,6 +12,8 @@ export interface ListItem {
   date: string
   // 分类
   tag: string
+  // 分类id
+  tagId: number
   // 文章
   post: string
 }
@@ -27,6 +29,7 @@ export const useListStore = defineStore('list', {
         name: '南下',
         date: '2025-07-28',
         tag: '生活随笔',
+        tagId: 1,
         post: `
 ## 📘  建站缘由
 
@@ -58,6 +61,7 @@ export const useListStore = defineStore('list', {
         name: '南下',
         date: '2025-07-30',
         tag: '前端开发',
+        tagId: 2,
         post: ` 
 \`\`\`txt
 一个简单、纯净、完全由我控制的前端博客项目
@@ -139,6 +143,11 @@ onMounted(() => {
   actions: {
   },
   getters: {
-    listLength: (state) => state.ListMap.length
+    listLength: (state) => state.ListMap.length,
+    tagLength: (state) => {
+      // 利用 Set 统计唯一的 tagId 数量
+      const uniqueTagIds = new Set(state.ListMap.map(item => item.tagId))
+      return uniqueTagIds.size
+    }
   }
 })
