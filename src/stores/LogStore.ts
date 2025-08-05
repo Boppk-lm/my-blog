@@ -145,6 +145,13 @@ export const useLogStore = defineStore('log', {
             "title": "使用Cloudflare实现CDN优化",
             "content": "通过配置Cloudflare，实现了网站的CDN加速，提升了页面加载速度和访问稳定性，特别是对国内用户体验有明显改善。",
             "insight": "⚡ 好像雀氏变快了点！"
+        },
+        {
+            "id": 19,
+            "date": "2025/08/05",
+            "title": "标签功能上线",
+            "content": "完成了文章标签的分类功能，实现标签点击跳转和对应文章筛选，提升了网站的可浏览性和内容组织。",
+            "insight": "🏷️ 标签点一点，内容清晰翻倍！"
         }
         ]
     }),
