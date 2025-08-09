@@ -1,7 +1,7 @@
 <template>
   <div class="loglist">
     <el-timeline style="max-width: 100%" center>
-      <el-timeline-item center :timestamp=item.date placement="top"   v-for="item in LogMap" :key="item.id">
+      <el-timeline-item center :timestamp=item.date placement="top" v-for="item in LogMap" :key="item.id">
         <el-card class="log-card">
           <div class="card-content">
             <div class="left">
@@ -24,7 +24,7 @@
 import { useLogStore } from '../../stores';
 import type { LogItem } from '../../stores/LogStore';
 const LogStore = useLogStore()
-const LogMap:LogItem[]= LogStore.reverseLogMap
+const LogMap: LogItem[] = LogStore.reverseLogMap
 console.log(LogMap);
 
 </script>

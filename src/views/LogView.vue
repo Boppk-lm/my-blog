@@ -7,21 +7,21 @@
     </div>
     <el-header>
       <!-- 背景图 -->
-            <!-- 泡泡容器 -->
-          <div class="bubble-container"></div>
-       <!-- 文字容器 -->
-         <div class="header-content">
-            <h1>{{ title }}</h1>
-  <p>{{ string }}</p>
-  </div>
+      <!-- 泡泡容器 -->
+      <div class="bubble-container"></div>
+      <!-- 文字容器 -->
+      <div class="header-content">
+        <h1>{{ title }}</h1>
+        <p>{{ string }}</p>
+      </div>
     </el-header>
     <el-main>
       <!-- 页面显示 -->
-      <PageContent/>
+      <PageContent />
     </el-main>
     <el-footer>
       <!-- 页尾 -->
-       <Footer/>
+      <Footer />
     </el-footer>
   </el-container>
   <!-- 回到顶部 -->
@@ -52,7 +52,7 @@ import { ref } from 'vue'
 const active = ref('log')  //控制导航栏地址
 //导入封装控制导航栏的函数
 import useScrollHide from '../composables/useScrollHide';
-const {isHidden} = useScrollHide()
+const { isHidden } = useScrollHide()
 //导入封装泡泡效果
 import useBubbleHide from '../composables/useBubbleHide';
 useBubbleHide()
@@ -65,6 +65,7 @@ const string = ref(hidestore.TitleMap[name].string[0])
 
 <style lang="less" scoped>
 @import '../less/nav.less';
+
 // 控制背景
 .el-header {
   background-image: url('../assets/log_bg.png');

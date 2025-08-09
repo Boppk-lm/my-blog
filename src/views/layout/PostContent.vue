@@ -7,9 +7,10 @@
                                         <div class="grid-content ep-bg-purple">
                                                 <el-page-header @back="goBack" icon="" title="返回">
                                                         <template #content>
-                                                                <span class="text-large font-600 mr-3"> {{ tag }} </span>
+                                                                <span class="text-large font-600 mr-3"> {{ tag }}
+                                                                </span>
                                                         </template>
-                                                        <div class="mt-4 text-sm article-content" v-html="postContent">      
+                                                        <div class="mt-4 text-sm article-content" v-html="postContent">
                                                         </div>
                                                 </el-page-header>
                                         </div>
@@ -25,7 +26,7 @@ import My from '../../components/post/My.vue';
 // 接收文章
 import { useRoute } from 'vue-router';
 import { useListStore } from '../../stores';
-import { onMounted,ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import type { ListItem } from '../../stores/ListStore';
 //引入 Markdown 渲染器
 import MarkdownIt from 'markdown-it'
@@ -35,20 +36,20 @@ const ListStore = useListStore()
 const postContent = ref(''); // 存储文章内容 HTML
 const tag = ref('')
 const article = ref<ListItem>(); // 存储整篇文章对象
-onMounted(()=> {
+onMounted(() => {
         // 获取文章的id
-        const post_id   = parseInt(route.params.id as string)
-        article.value = ListStore.ListMap.find(item=> item.id === post_id) 
-       if (article.value) {
-        // 把markdown字符串渲染成HTML
-         postContent.value = md.render(article.value.post)
-         tag.value = article.value.tag
-       }else {
-        postContent.value=` <div class="not-found">
+        const post_id = parseInt(route.params.id as string)
+        article.value = ListStore.ListMap.find(item => item.id === post_id)
+        if (article.value) {
+                // 把markdown字符串渲染成HTML
+                postContent.value = md.render(article.value.post)
+                tag.value = article.value.tag
+        } else {
+                postContent.value = ` <div class="not-found">
         <h3>文章未找到</h3>
         <p>抱歉，您请求的文章不存在或已被删除</p>
       </div>`
-       }
+        }
 })
 
 const goBack = () => {
@@ -156,7 +157,7 @@ const goBack = () => {
                         }
 
                         strong {
-                                color: #e74c3c;
+                                // color: #e74c3c;
                                 font-weight: 600;
                         }
                 }

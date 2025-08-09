@@ -16,7 +16,7 @@
 
                                                 <div class="user">
                                                         <span style="font-size: 24px; font-weight: 700;">{{ name
-                                                                }}</span>
+                                                        }}</span>
                                                         <span>{{ individuality }}</span>
                                                         <div class="count">
                                                                 <div>
@@ -94,13 +94,13 @@
 <script setup lang='ts'>
 import nameAvatar from '@/assets/name.jpg'
 //用pinia控制My部分
-import { useMyStore,useListStore } from '../../stores';
+import { useMyStore, useListStore } from '../../stores';
 import { reactive } from 'vue';
 import { storeToRefs } from 'pinia'
 const MyStore = useMyStore()
 const listStore = useListStore()
 const { listLength, tagLength } = storeToRefs(listStore)
-const {name,individuality,affiche} = reactive(MyStore)
+const { name, individuality, affiche } = reactive(MyStore)
 </script>
 
 <style lang="less" scoped>

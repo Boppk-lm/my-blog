@@ -1,6 +1,6 @@
 <template>
         <div class="postlist">
-                <div class="post" >
+                <div class="post">
                         <!-- 文章列表 -->
                         <el-row :gutter="20">
                                 <el-col :span="8" v-for="item in ClassList" :key="item.id">
@@ -10,7 +10,7 @@
                                 </el-col>
                         </el-row>
                 </div>
-                <My/>
+                <My />
         </div>
 
 </template>
@@ -25,13 +25,12 @@ import { useRoute } from 'vue-router';
 const ListStore = useListStore()
 const route = useRoute()
 const tagId = parseInt(route.params.id as string)
-const ClassList = computed(()=> {
-        return ListStore.ListMap.filter(item => item.tagId === tagId )
+const ClassList = computed(() => {
+        return ListStore.ListMap.filter(item => item.tagId === tagId)
 })
 </script>
 
 <style lang="less" scoped>
-
 //文章列表展示布局
 .postlist {
         display: flex;

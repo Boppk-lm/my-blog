@@ -1,36 +1,36 @@
 <template>
-    <el-menu mode="horizontal" class="el-menu-demo" :ellipsis="false" :default-active="active" router
-      background-color="transparent" text-color="#fff" active-text-color="#fff">
-      <!-- logo -->
-      <el-menu-item index="/" class="no-underline">
-        <img style="width: 180px" src="../assets/logo.png" alt="logo" />
-      </el-menu-item>
-      <!-- 首页 -->
-      <el-menu-item index="/">
-        <el-icon size="25">
-          <SvgIcon iconName="icon-zhuye-copy"></SvgIcon>
-        </el-icon>
-        首页
-      </el-menu-item>
-      <!-- 开发历程 -->
-      <el-menu-item index="/log">
-        <el-icon size="25">
-          <SvgIcon iconName="icon-ColourSystemManagement-copy"></SvgIcon>
-        </el-icon>
-        开发历程
-      </el-menu-item>
-      <!-- 关于我 -->
-      <el-menu-item index="/me">
-        <el-icon size="25">
-          <SvgIcon iconName="icon-wogerenziliao-copy"></SvgIcon>
-        </el-icon>
-        关于我
-      </el-menu-item>
-    </el-menu>
+  <el-menu mode="horizontal" class="el-menu-demo" :ellipsis="false" :default-active="active" router
+    background-color="transparent" text-color="#fff" active-text-color="#fff">
+    <!-- logo -->
+    <el-menu-item index="/" class="no-underline">
+      <img style="width: 180px" src="../assets/logo.png" alt="logo" />
+    </el-menu-item>
+    <!-- 首页 -->
+    <el-menu-item index="/">
+      <el-icon size="25">
+        <SvgIcon iconName="icon-zhuye-copy"></SvgIcon>
+      </el-icon>
+      首页
+    </el-menu-item>
+    <!-- 开发历程 -->
+    <el-menu-item index="/log">
+      <el-icon size="25">
+        <SvgIcon iconName="icon-ColourSystemManagement-copy"></SvgIcon>
+      </el-icon>
+      开发历程
+    </el-menu-item>
+    <!-- 关于我 -->
+    <el-menu-item index="/me">
+      <el-icon size="25">
+        <SvgIcon iconName="icon-wogerenziliao-copy"></SvgIcon>
+      </el-icon>
+      关于我
+    </el-menu-item>
+  </el-menu>
 </template>
 
 <script setup lang='ts'>
-import {defineProps} from 'vue'
+import { defineProps } from 'vue'
 defineProps(['active']) //接收父传来的地址
 </script>
 
@@ -75,5 +75,4 @@ defineProps(['active']) //接收父传来的地址
 .el-menu--horizontal .el-menu-item.is-active:not(.no-underline)::after {
   width: 80%;
 }
-
 </style>

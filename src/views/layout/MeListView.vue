@@ -22,17 +22,20 @@
                                                 <div>
                                                         <span class="info-title">星座</span>
                                                         <br>
-                                                        <span class="info-content" style="color: #E53935;">{{ constellatory }}</span>
+                                                        <span class="info-content" style="color: #E53935;">{{
+                                                                constellatory }}</span>
                                                 </div>
                                                 <div>
                                                         <span class="info-title">来自</span>
                                                         <br>
-                                                        <span class="info-content" style="color: #5C6BC0;">{{ from }}</span>
+                                                        <span class="info-content" style="color: #5C6BC0;">{{ from
+                                                                }}</span>
                                                 </div>
                                                 <div>
                                                         <span class="info-title">保持热爱</span>
                                                         <br>
-                                                        <span class="info-content" style="color: #9C27B0;">{{ like }}</span>
+                                                        <span class="info-content" style="color: #9C27B0;">{{ like
+                                                                }}</span>
                                                 </div>
                                         </div>
                                 </div>
@@ -178,7 +181,7 @@ onMounted(() => {
 //使用pinia控制关于我 
 import { useMeStore } from '../../stores';
 const MeStore = useMeStore()
-const { wecome_title,wecome_content,constellatory,from,like,tagcloud } = reactive(MeStore)
+const { wecome_title, wecome_content, constellatory, from, like, tagcloud } = reactive(MeStore)
 </script>
 
 <style lang="less" scoped>

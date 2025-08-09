@@ -1,6 +1,6 @@
 <template>
         <div class="postlist">
-                <div class="post" >
+                <div class="post">
                         <!-- 文章列表 -->
                         <el-row :gutter="20">
                                 <el-col :span="8" v-for="item in ListMap" :key="item.id">
@@ -10,7 +10,7 @@
                                 </el-col>
                         </el-row>
                 </div>
-                <My/>
+                <My />
         </div>
 
 </template>
@@ -26,7 +26,6 @@ const ListMap = reactive(ListStore.ListMap)
 </script>
 
 <style lang="less" scoped>
-
 //文章列表展示布局
 .postlist {
         display: flex;

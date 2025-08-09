@@ -15,11 +15,9 @@ const props = defineProps({
     },
 })
 // 图标在 iconfont 中的名字
-const iconHref = computed(()=>{
-  return `#${props.iconName}`
+const iconHref = computed(() => {
+    return `#${props.iconName}`
 })
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
