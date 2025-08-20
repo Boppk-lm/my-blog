@@ -25,8 +25,6 @@ import { useLogStore } from '../../stores';
 import type { LogItem } from '../../stores/LogStore';
 const LogStore = useLogStore()
 const LogMap: LogItem[] = LogStore.reverseLogMap
-console.log(LogMap);
-
 </script>
 
 <style lang="less" scoped>
