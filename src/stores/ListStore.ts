@@ -140,7 +140,7 @@ onMounted(() => {
       },
       {
         id: 2,
-        cover: 'cover.png',
+        cover: 'cover3.png',
         title: '近期任务汇报：找工作与 Vue3 重构之路',
         content: '汇报一下近期的状态：找工作+重构 Vue2 项目 正好手头有一个 Vue2 的老项目，打算用 Vue3 重新开发一遍，顺便重新熟悉一下 axios',
         name: '南下',
@@ -172,7 +172,7 @@ onMounted(() => {
       },
       {
         id: 3,
-        cover: 'cover.png',
+        cover: 'cover4.png',
         title: 'Vue3 重构大事件后台管理系统总结',
         content: '最近把之前写的大事件后台管理系统从 Vue2 重构到 Vue3，顺便熟悉了 Pinia、Axios、Element Plus 等技术，并整理了心得体会。',
         name: '南下',
@@ -302,7 +302,7 @@ ps：厂里的饭还是不错的，就是有点小贵。
       ,
       {
         id: 5,
-        cover: 'cover.png',
+        cover: 'cover6.png',
         title: '这次,我想我会成功的~',
         content: '好久没更新了，总体还行。腿已经完全适应了，虽然上周连着十几天才休息，但也还是撑住了。后来调去了一个相对轻松的岗位，算是个小幸运。只是对比朋友在努力备考学习，自己却总是摆烂，心里难免觉得惭愧。不过，这次我真的想做好，不想再让自己失望了。',
         name: '南下',
@@ -327,7 +327,7 @@ ps：厂里的饭还是不错的，就是有点小贵。
       ,
       {
         id: 6,
-        cover: 'cover.png',
+        cover: 'cover7.png',
         title: '进厂过渡副本结束，开启南京求职副本~',
         content: '终于还是扛不住了，哈哈，太累了，尤其是夜班。干了两个月，也攒下了一些启动资金，准备开启南京副本~',
         name: '南下',
