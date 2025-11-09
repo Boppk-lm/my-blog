@@ -13,14 +13,14 @@
       首页
     </el-menu-item>
     <!-- 开发历程 -->
-    <el-menu-item index="/log">
+    <el-menu-item index="log">
       <el-icon size="25">
         <SvgIcon iconName="icon-ColourSystemManagement-copy"></SvgIcon>
       </el-icon>
       开发历程
     </el-menu-item>
     <!-- 关于我 -->
-    <el-menu-item index="/me">
+    <el-menu-item index="me">
       <el-icon size="25">
         <SvgIcon iconName="icon-wogerenziliao-copy"></SvgIcon>
       </el-icon>
@@ -71,8 +71,13 @@ defineProps(['active']) //接收父传来的地址
 }
 
 /*鼠标悬浮时*/
-.el-menu--horizontal .el-menu-item:not(.no-underline):hover::after,
-.el-menu--horizontal .el-menu-item.is-active:not(.no-underline)::after {
-  width: 80%;
+.el-menu--horizontal .el-menu-item:not(.no-underline):hover::after {
+   width: 80%;
 }
+/* 激活下划线*/
+ .el-menu--horizontal .el-menu-item.is-active:not(.no-underline)::after {
+     width: 80%;
+ }
+
+
 </style>
