@@ -160,12 +160,12 @@ export const useLogStore = defineStore('log', {
             "content": "集中精力找工作，计划用 Vue3 重构 Vue2 老项目，顺便重新熟悉下 axios，提升前端能力。",
             "insight": "🔄 整体功能都差不多了 "
         },
-            {
+        {
             "id": 21,
-            "date": "2025/09/22",
-            "title": "不定期更新博客文章",
-            "content": "找不到工作，已经进厂沉淀了，不过我还是会不定期更新自己的近况的，一起加油吧。",
-            "insight": "🙃 起起伏伏是人生常态，但我怎么没有起呢?"
+            "date": "2025/11/09",
+            "title": "导航栏下划线 Bug 修复",
+            "content": "突然发现导航栏下划线在切换页面后不显示的 Bug，排查发现是 Hash 模式和 index 匹配的问题。",
+            "insight": "🙃 Bug 小小的，也很可爱~"
         }
         ]
     }),
