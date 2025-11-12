@@ -166,6 +166,13 @@ export const useLogStore = defineStore('log', {
             "title": "导航栏下划线 Bug 修复",
             "content": "突然发现导航栏下划线在切换页面后不显示的 Bug，排查发现是 Hash 模式和 index 匹配的问题。",
             "insight": "🙃 Bug 小小的，也很可爱~"
+        },
+        {
+            "id": 22,
+            "date": "2025/11/11",
+            "title": "新增加载页面",
+            "content": "给博客增加了一个加载页面，提升用户体验。",
+            "insight": "🤔 好像加载有点慢，图片加载看来也要优化下"
         }
         ]
     }),
