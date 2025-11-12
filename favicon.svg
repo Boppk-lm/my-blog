@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <!-- 黑色圆角背景 -->
+  <rect width="100%" height="100%" rx="12" ry="12" fill="black" />
+
+  <!-- 绿色 L，稍微上移居中 -->
+  <text x="14" y="40" font-family="Arial, sans-serif" font-size="34" fill="limegreen" font-weight="bold">L</text>
+
+  <!-- 白色 の，右下偏角 -->
+  <text x="42" y="56" font-family="serif" font-size="18" fill="white">の</text>
+</svg>
