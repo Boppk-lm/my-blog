@@ -1,18 +1,16 @@
 <template>
+  <!-- 导航栏 -->
+  <div class="nav-bar" :class="{ hide: isHidden }">
+    <NavBar :active="active" />
+  </div>
 
   <el-container>
-    <!-- 导航栏 -->
-    <div class="nav-bar" :class="{ hide: isHidden }">
-      <NavBar :active="active" />
-    </div>
-    <el-header>
-      <!-- 背景图 -->
-      <!-- 文字容器 -->
-      <div class="header-content">
-        <h1>{{ title }}</h1>
-        <p><span ref="typingText"></span></p>
-      </div>
-    </el-header>
+    <!-- 顶部封面 -->
+    <HeroHeader :bg="homeBg" :title="title" :bubble="false">
+      <template #subtitle>
+        <span ref="typingText"></span>
+      </template>
+    </HeroHeader>
     <el-main>
       <!-- 页面显示 -->
       <PageContent />
@@ -43,9 +41,11 @@
 
 <script setup lang='ts'>
 const name = 'home'
+import homeBg from '../assets/home_bg.png';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
+import HeroHeader from '../components/HeroHeader.vue';
 import { ref, onMounted, onUnmounted, reactive } from 'vue';
 const active = ref('/')  //控制导航栏地址
 //导入封装控制导航栏的函数
@@ -80,9 +80,4 @@ const string = reactive(hidestore.TitleMap[name].string)
 
 <style lang="less" scoped>
 @import '../less/nav.less';
-
-// 控制背景
-.el-header {
-  background-image: url('../assets/home_bg.png');
-}
 </style>

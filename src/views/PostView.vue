@@ -1,20 +1,15 @@
 <template>
-
+  <!-- 导航栏 -->
+  <div class="nav-bar" :class="{ hide: isHidden }">
+    <NavBar :active="active" />
+  </div>
   <el-container>
-    <!-- 导航栏 -->
-    <div class="nav-bar" :class="{ hide: isHidden }">
-      <NavBar :active="active" />
-    </div>
-    <el-header>
-      <!-- 背景图 -->
-      <!-- 泡泡容器 -->
-      <div class="bubble-container"></div>
-      <!-- 文字容器 -->
-      <div class="header-content">
-        <h1>{{ title }}</h1>
+    <!-- 顶部封面 -->
+    <HeroHeader :bg="postBg" :title="title">
+      <template #subtitle>
         <p>{{ string }}</p>
-      </div>
-    </el-header>
+      </template>
+    </HeroHeader>
     <el-main>
       <!-- 页面显示 -->
       <PageContent />
@@ -45,17 +40,16 @@
 
 <script setup lang='ts'>
 const name = 'post'
+import postBg from '../assets/post_bg.png';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
+import HeroHeader from '../components/HeroHeader.vue';
 import { ref } from 'vue'
 const active = ref('post')  //控制导航栏地址
 //导入封装控制导航栏的函数
 import useScrollHide from '../composables/useScrollHide';
 const { isHidden } = useScrollHide()
-//导入封装泡泡效果
-import useBubbleHide from '../composables/useBubbleHide';
-useBubbleHide()
 //使用pinia控制标题
 import { useHideStore } from '../stores';
 const hidestore = useHideStore()

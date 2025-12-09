@@ -56,8 +56,6 @@ onMounted(() => {
     display: flex;
     gap: 12px;
     margin-bottom: 10px;
-
-    /* 小球和下划线间距 */
     .dot {
         width: 16px;
         height: 16px;
@@ -107,6 +105,6 @@ onMounted(() => {
 }
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0; /* 开始或结束时透明 */
+  opacity: 0;
 }
 </style>
