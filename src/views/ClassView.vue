@@ -5,7 +5,7 @@
   </div>
   <el-container>
     <!-- 顶部封面 -->
-    <HeroHeader :bg="classBg" :title="title">
+    <HeroHeader :bg="classBg" :title="title" :small-bg="smallBg">
       <template #subtitle>
         <p>{{ string }}</p>
       </template>
@@ -55,6 +55,7 @@ import { useHideStore } from '../stores';
 const hidestore = useHideStore()
 const title = ref(hidestore.TitleMap[name].hide)
 const string = ref(hidestore.TitleMap[name].string[0])
+const smallBg = `/cdn-cgi/image/width=400,quality=60${classBg}`;
 </script>
 
 <style lang="less" scoped>

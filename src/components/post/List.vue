@@ -4,7 +4,7 @@
     <div class="list">
       <!-- 封面 -->
       <div class="cover" @click="navigate">
-        <img :src="images[`../../assets/cover/${ListMap.cover}`]" alt="">
+        <img :src="images[`../../assets/cover/${ListMap.cover}`]" alt="" loading="lazy">
         <div class="mask">
           <el-icon size="25">
             <SvgIcon iconName="icon-dianji"></SvgIcon>
@@ -14,11 +14,11 @@
       <!-- 内容 -->
       <div class="box">
         <!-- 标题 -->
-         <!-- <el-tooltip :content=ListMap.title placement="top"> -->
-  <div class="title" @click="navigate">
+        <!-- <el-tooltip :content=ListMap.title placement="top"> -->
+        <div class="title" @click="navigate">
           {{ ListMap.title }}
         </div>
-         <!-- </el-tooltip> -->
+        <!-- </el-tooltip> -->
         <!-- 简介 -->
         <div class="content">
           <el-icon size="22">
@@ -61,7 +61,6 @@ import nameAvatar from '@/assets/name.jpg'
 // 动态导入封面
 const images = import.meta.glob('../../assets/cover/*.png', { eager: true, import: 'default' }) as Record<string, string>
 // 接受父组件的元素
-import { defineProps } from 'vue';
 defineProps(['ListMap'])
 // 跳转到分类页面
 import { useRouter } from 'vue-router';

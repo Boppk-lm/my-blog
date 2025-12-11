@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import path from 'path'
+import path, { format } from 'path'
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue()
+  ],
   //服务器仓库
-  base:'/',
+  base: '/',
   //less配置
-   css: {
+  css: {
     preprocessorOptions: {
       less: {
         javascriptEnabled: true,
@@ -17,7 +18,7 @@ export default defineConfig({
   //相对地址@的配置
   resolve: {
     alias: {
-      '@':path.resolve(__dirname,'./src')
+      '@': path.resolve(__dirname, './src')
     }
   }
 })

@@ -9,14 +9,16 @@
                                                         <!-- 头像+呼吸灯效果 -->
                                                         <div class="avatar-wrapper">
                                                                 <span class="breath-ring"></span>
-                                                                <el-avatar :size="80" :src="nameAvatar" class="name" />
+                                                                <!-- <el-avatar :size="80" :src="nameAvatar" class="name" /> -->
+                                                                <img :src="nameAvatar" class="name avatar-img"
+                                                                        loading="lazy" />
                                                         </div>
 
                                                 </div>
 
                                                 <div class="user">
                                                         <span style="font-size: 24px; font-weight: 700;">{{ name
-                                                        }}</span>
+                                                                }}</span>
                                                         <span>{{ individuality }}</span>
                                                         <div class="count">
                                                                 <div>
@@ -146,7 +148,7 @@ const { name, individuality, affiche } = reactive(MyStore)
                         position: relative;
                         height: 150px;
 
-                        background-image: url('../../assets/blog_meme.gif');
+                        background-image: url('../../assets/blog_meme.webp');
                         background-size: 90%;
                         //   background-size: cover;       /* 图片覆盖整个区域 */
                         background-position: center;
@@ -180,6 +182,10 @@ const { name, individuality, affiche } = reactive(MyStore)
 
                                 .name {
                                         position: relative;
+                                        width: 80px;
+                                        height: 80px;
+                                        border-radius: 50%;
+                                        object-fit: cover;
                                         z-index: 2;
                                 }
 

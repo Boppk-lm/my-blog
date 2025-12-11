@@ -6,7 +6,7 @@
 
   <el-container>
     <!-- 顶部封面 -->
-    <HeroHeader :bg="homeBg" :title="title" :bubble="false">
+    <HeroHeader :bg="homeBg" :title="title" :bubble="false" :small-bg="smallBg">
       <template #subtitle>
         <span ref="typingText"></span>
       </template>
@@ -75,7 +75,9 @@ import { useHideStore } from '../stores';
 const hidestore = useHideStore()
 const title = ref(hidestore.TitleMap[name].hide)
 const string = reactive(hidestore.TitleMap[name].string)
-
+const smallBg = `/cdn-cgi/image/width=400,quality=60${homeBg}`;
+console.log(smallBg)
+console.log("homeBg =", homeBg);
 </script>
 
 <style lang="less" scoped>

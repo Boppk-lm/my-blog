@@ -1,6 +1,6 @@
 <template>
     <!-- 背景图 -->
-    <div class="hero-header" :style="{ backgroundImage: `url(${bg})` }">
+    <div class="hero-header" :style="{ backgroundImage: currentBg  }" ref="heroRef">
         <!-- 泡泡容器 -->
         <div class="bubble-container"></div>
         <!-- 文字容器 -->
@@ -15,11 +15,13 @@
 
 <script setup lang='ts'>
 //导入封装泡泡效果
+import { onMounted,ref } from 'vue';
 import useBubbleHide from '../composables/useBubbleHide';
 const props = withDefaults(defineProps<{
     title: string,
     bg: string,
     bubble?: boolean   // 控制冒泡效果
+    smallBg: string,   // 小图（新增）
 }>(),{
     bubble: true
 })
@@ -27,6 +29,18 @@ const props = withDefaults(defineProps<{
 if (props.bubble !== false) {
     useBubbleHide()
 }
+const currentBg = ref(`url(${props.smallBg})`); // 初始为小图
+const heroRef = ref<HTMLElement | null>(null); 
+onMounted(() => {
+    const img = new Image();
+    img.src = props.bg;
+    img.onload = () => {
+        currentBg.value = `url(${props.bg})`; // 加载完成后切换为大图
+        if (heroRef.value) {
+            heroRef.value.classList.add('loaded'); // 添加已加载类
+        }
+    };
+});
 </script>
 
 <style lang="less" scoped>
@@ -102,5 +116,13 @@ if (props.bubble !== false) {
     .hero-header {
         height: 300px; /* 你也可以调成 400 */
     }
+}
+// 封面加载优化
+.hero-header {
+    filter: blur(10px);
+    transition: filter 0.6s ease;
+}
+.hero-header.loaded {
+    filter: blur(0);
 }
 </style>
