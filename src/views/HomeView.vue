@@ -75,7 +75,7 @@ import { useHideStore } from '../stores';
 const hidestore = useHideStore()
 const title = ref(hidestore.TitleMap[name].hide)
 const string = reactive(hidestore.TitleMap[name].string)
-const smallBg = `/cdn-cgi/image/width=400,quality=60${homeBg}`;
+const smallBg = `${homeBg}?width=400&quality=60`;
 console.log(smallBg)
 console.log("homeBg =", homeBg);
 </script>
