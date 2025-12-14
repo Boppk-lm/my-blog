@@ -12,4 +12,9 @@
   padding-left: 15%;
   padding-right: 15%;
 }
+@media (max-width: 768px) {
+  .count {
+    padding: 0;
+  }
+}
 </style>
