@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import List from '../../components/post/List.vue';
 import My from '../../components/post/My.vue';
 //获取分类文章列表
