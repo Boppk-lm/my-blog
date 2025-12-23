@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import List from '../../components/post/List.vue';
 import My from '../../components/post/My.vue';
 //获取分类文章列表
@@ -28,6 +28,8 @@ const tagId = parseInt(route.params.id as string)
 const ClassList = computed(() => {
         return ListStore.ListMap.filter(item => item.tagId === tagId)
 })
+
+
 </script>
 
 <style lang="less" scoped>
