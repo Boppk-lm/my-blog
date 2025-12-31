@@ -10,14 +10,19 @@
                                                                 <span class="text-large font-600 mr-3"> {{ tag }}
                                                                 </span>
                                                         </template>
-                                                        <div class="mt-4 text-sm article-content" v-html="postContent">
-                                                        </div>
+
                                                 </el-page-header>
+                                                <!-- 内容 -->
+                                                <div class="mt-4 text-sm article-content" v-html="postContent">
+                                                </div>
                                         </div>
                                 </el-col>
                         </el-row>
                 </div>
-                <My></My>
+                <div class="sidebar">
+                        <My></My>
+                </div>
+
         </div>
 </template>
 
@@ -63,11 +68,12 @@ const goBack = () => {
         display: flex;
 
         .count {
-                width: 70%;
+                flex: 0 0 70%; // 🔥 真正控制宽度
+                min-width: 0; // 防止溢出
 
                 // 文章内容样式
                 :deep(.article-content) {
-                        padding: 20px;
+                        padding: 10px;
                         margin-top: 20px;
                         line-height: 1.8;
                         color: #333;
@@ -174,5 +180,61 @@ const goBack = () => {
 
                 }
         }
+
+        .sidebar {
+                flex: 0 0 30%; // 🔥 真正控制宽度
+                min-width: 0;
+        }
+
+        .sidebar>* {
+                width: 100%; // 🔥 强制 My 铺满
+        }
+}
+
+@media (max-width: 768px) {
+        .postcount {
+                overflow-x: hidden;
+                flex-direction: column;
+
+                .count {
+                        flex: 0 0 100%;
+
+                        // 头部消失
+                        :deep(.el-page-header) {
+                                display: none;
+                        }
+
+                        :deep(.article-content) {
+                                padding: 5px;
+                                margin-top: 0px;
+
+                                h3 {
+                                        font-size: 1.2rem;
+                                }
+
+                                h4 {
+                                        font-size: 1.2rem;
+                                }
+
+                                p {
+                                        font-size: 1rem;
+                                }
+
+                                pre {
+                                        margin: 1rem 0;
+                                }
+                        }
+
+
+                        .grid-content {
+                                padding: 5px;
+                        }
+                }
+
+                .sidebar {
+                        display: none;
+                }
+        }
+
 }
 </style>

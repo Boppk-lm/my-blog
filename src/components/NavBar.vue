@@ -1,7 +1,7 @@
 <template>
   <div class="nav-wrapper">
     <!-- PC端导航栏 -->
-    <el-menu mode="horizontal" class="el-menu-demo  pc-nav" :ellipsis="false" :default-active="active" router
+    <el-menu mode="horizontal" class="el-menu-demo  pc-nav" :ellipsis="false" :default-active="$route.path" router
       background-color="transparent" text-color="#fff" active-text-color="#fff">
       <!-- logo -->
       <el-menu-item index="/" class="no-underline">
@@ -15,14 +15,14 @@
         首页
       </el-menu-item>
       <!-- 开发历程 -->
-      <el-menu-item index="log">
+      <el-menu-item index="/log">
         <el-icon size="25">
           <SvgIcon iconName="icon-ColourSystemManagement-copy"></SvgIcon>
         </el-icon>
         开发历程
       </el-menu-item>
       <!-- 关于我 -->
-      <el-menu-item index="me">
+      <el-menu-item index="/me">
         <el-icon size="25">
           <SvgIcon iconName="icon-wogerenziliao-copy"></SvgIcon>
         </el-icon>
@@ -36,31 +36,36 @@
     </div>
     <!--手机端全屏抽屉菜单 -->
     <transition name="fade">
-      <div v-if="isOpen" class="mobile-menu">
+      <!-- 遮罩层 -->
+      <div v-if="isOpen" class="mobile-overlay" @click="isOpen = false">
+        <!-- 抽屉菜单 -->
+        <div v-if="isOpen" class="mobile-menu"  @click.stop>
 
-        <div class="mobile-menu-header">
-          <img class="mobile-logo-big" src="../assets/logo.png" alt="logo" />
-          <button class="mobile-close" @click="isOpen = false">✕</button>
+          <div class="mobile-menu-header">
+            <img class="mobile-logo-big" src="../assets/logo.png" alt="logo" />
+            <button class="mobile-close" @click="isOpen = false">✕</button>
+          </div>
+
+          <ul class="mobile-menu-list">
+            <li @click="goTo('/')" class="mobile-item">
+              <SvgIcon iconName="icon-zhuye-copy" class="mobile-icon" />
+              首页
+            </li>
+
+            <li @click="goTo('/log')" class="mobile-item">
+              <SvgIcon iconName="icon-ColourSystemManagement-copy" class="mobile-icon" />
+              开发历程
+            </li>
+
+            <li @click="goTo('/me')" class="mobile-item">
+              <SvgIcon iconName="icon-wogerenziliao-copy" class="mobile-icon" />
+              关于我
+            </li>
+          </ul>
+
         </div>
-
-        <ul class="mobile-menu-list">
-          <li @click="goTo('/')" class="mobile-item">
-            <SvgIcon iconName="icon-zhuye-copy" class="mobile-icon" />
-            首页
-          </li>
-
-          <li @click="goTo('log')" class="mobile-item">
-            <SvgIcon iconName="icon-ColourSystemManagement-copy" class="mobile-icon" />
-            开发历程
-          </li>
-
-          <li @click="goTo('me')" class="mobile-item">
-            <SvgIcon iconName="icon-wogerenziliao-copy" class="mobile-icon" />
-            关于我
-          </li>
-        </ul>
-
       </div>
+
     </transition>
 
   </div>
@@ -68,16 +73,15 @@
 </template>
 
 <script setup lang='ts'>
-import { ref, defineProps,watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useRouter } from "vue-router";
-defineProps(['active']) //接收父传来的地址
 const isOpen = ref(false);
 const router = useRouter();
 const goTo = (path: string) => {
   router.push(path);
   isOpen.value = false;
 };
-watch(()=>isOpen.value, (newVal) => {
+watch(() => isOpen.value, (newVal) => {
   if (newVal) {
     document.body.style.overflow = 'hidden'; // 禁止滚动
   } else {
@@ -172,11 +176,13 @@ watch(()=>isOpen.value, (newVal) => {
 
 
 /* 手机端全屏抽屉菜单 */
-.mobile-menu {
+.mobile-overlay {
   position: fixed;
   inset: 0;
+  z-index: 99998;
   backdrop-filter: blur(15px);
-  z-index: 99999;
+}
+.mobile-menu {
   color: white;
   height: 60vh;
   display: flex;
@@ -207,14 +213,16 @@ watch(()=>isOpen.value, (newVal) => {
   display: flex;
   flex: 1;
   flex-direction: column;
-    justify-content: space-evenly; /* ⭐ 垂直平分（关键） */
+  justify-content: space-evenly;
+  /* ⭐ 垂直平分（关键） */
 }
 
 .mobile-item {
   display: flex;
-    align-items: center;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
+
 .mobile-icon {
   width: 28px;
   height: 28px;

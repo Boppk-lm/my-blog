@@ -45,6 +45,9 @@ onMounted(() => {
 
 <style lang="less" scoped>
 .hero-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     border-radius: 8px;
     width: 100%;
@@ -79,7 +82,6 @@ onMounted(() => {
     // 图上文字
     .header-content {
         position: relative;
-        margin-top: 300px;
         text-align: center;
         z-index: 2;
 
@@ -115,7 +117,16 @@ onMounted(() => {
 @media (max-width: 768px) {
     .hero-header {
         height: 300px; /* 你也可以调成 400 */
+         .header-content {
+            margin-top: 50px;
+        h1 {
+            font-size: 24px;
+         }
+        p {
+            font-size: 12px;
+        }
     }
+}
 }
 // 封面加载优化
 .hero-header {

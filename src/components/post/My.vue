@@ -2,7 +2,7 @@
         <div class="my">
                 <el-row>
                         <!-- 站主 -->
-                        <el-col :span="22">
+                        <el-col :xs="24" :md="22">
                                 <div class="grid-content ep-bg-purple">
                                         <div class="users">
                                                 <div class="cover">
@@ -51,7 +51,7 @@
                                 </div>
                         </el-col>
                         <!-- 公告栏 -->
-                        <el-col :span="22">
+                        <el-col :xs="24" :md="22">
                                 <div class="grid-content ep-bg-purple" style=" min-height: 150px;">
                                         <div class="noticeboard">
                                                 <div class="title">
@@ -67,7 +67,7 @@
                                 </div>
                         </el-col>
                         <!-- 微信二维码 -->
-                        <el-col :span="22">
+                        <el-col :xs="24" :md="22">
                                 <div class="grid-content ep-bg-purple" style=" min-height: 120px;">
                                         <div class="weixin">
                                                 <div class="QR"></div>
@@ -295,6 +295,76 @@ const { name, individuality, affiche } = reactive(MyStore)
                                         line-height: 1;
                                         margin-left: 10px;
                                         font-size: 18px;
+                                }
+                        }
+                }
+        }
+}
+
+@media (max-width: 768px) {
+        .my {
+                width: 100%;
+                margin: 0px;
+
+                .el-row {
+                        margin-left: 0;
+                        margin-right: 0;
+                }
+
+                .el-col {
+                        padding-left: 8px;
+                        padding-right: 8px;
+                }
+
+                .grid-content {
+                        min-height: auto;
+                }
+
+                // 用户信息
+                .users {
+                        .user {
+                                margin-top: 12px;
+                                padding: 12px;
+
+                                span:first-child {
+                                        font-size: 18px; // 用户名
+                                }
+
+                                span:last-child {
+                                        font-size: 13px; // 个性签名
+                                }
+
+                                .count {
+                                        font-size: 14px;
+                                        margin-top: 8px;
+                                }
+                        }
+                }
+
+                // 公告栏
+                .noticeboard {
+                        padding: 14px;
+                        .title {
+                                font-size: 15px;
+                        }
+
+                        .content {
+                                font-size: 14px;
+                        }
+                }
+
+                // 微信模块
+                .weixin {
+                        display: flex;
+                        padding: 14px;
+                        .search {
+                            
+                                .top span {
+                                        font-size: 16px;
+                                }
+
+                                .bottom span {
+                                        font-size: 14px;
                                 }
                         }
                 }

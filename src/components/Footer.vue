@@ -35,4 +35,10 @@
             color: #4183c4;
       }
 }
+@media (max-width: 768px) {
+      .footer {
+            font-size: 12px;
+            height: 80px;
+      }
+}
 </style>

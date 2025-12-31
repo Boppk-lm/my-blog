@@ -3,7 +3,7 @@
                 <!-- 欢迎卡片 -->
                 <el-row :gutter="25">
                         <!-- 欢迎词 -->
-                        <el-col :span="14">
+                        <el-col :xs="24" :md="14">
                                 <div class="grid-content ep-bg-purple"
                                         style="background: linear-gradient(to right, #BA68C8, #FFB74D);">
                                         <div class="wecome">
@@ -16,7 +16,7 @@
                                 </div>
                         </el-col>
                         <!-- 个人信息 -->
-                        <el-col :span="10">
+                        <el-col :xs="24" :md="10">
                                 <div class="grid-content ep-bg-purple">
                                         <div class="info">
                                                 <div>
@@ -29,13 +29,13 @@
                                                         <span class="info-title">来自</span>
                                                         <br>
                                                         <span class="info-content" style="color: #5C6BC0;">{{ from
-                                                                }}</span>
+                                                        }}</span>
                                                 </div>
                                                 <div>
                                                         <span class="info-title">保持热爱</span>
                                                         <br>
                                                         <span class="info-content" style="color: #9C27B0;">{{ like
-                                                                }}</span>
+                                                        }}</span>
                                                 </div>
                                         </div>
                                 </div>
@@ -44,7 +44,7 @@
                 <!-- 人格测试 -->
                 <el-row :gutter="20">
                         <!-- 测试结果 -->
-                        <el-col :span="12">
+                        <el-col :xs="24" :md="12">
                                 <div class="grid-content ep-bg-purple" style="min-height: 196px;">
                                         <div class="selfhood">
                                                 <span style="font-size: 14px;">人格</span>
@@ -68,7 +68,7 @@
                                 </div>
                         </el-col>
                         <!-- 进度条 -->
-                        <el-col :span="12">
+                        <el-col :xs="24" :md="12">
                                 <div class="grid-content ep-bg-purple" style="min-height: 196px;">
                                         <div class="demo-progress">
 
@@ -121,7 +121,7 @@
                 <!-- 关于我的 -->
                 <el-row :gutter="20">
                         <!-- 想说的话 -->
-                        <el-col :span="16">
+                        <el-col :xs="24" :md="16">
                                 <div class="grid-content ep-bg-purple" style="min-height: 300px;">
                                         <div class="talk">
                                                 <div class="decoration top-left">✍️</div>
@@ -137,7 +137,7 @@
                                 </div>
                         </el-col>
                         <!-- 标签云 -->
-                        <el-col :span="8">
+                        <el-col :xs="24" :md="8">
                                 <div class="grid-content ep-bg-purple" style="min-height: 300px; display: flex;">
                                         <div class="tag-cloud" id="tagcloud">
                                         </div>
@@ -370,5 +370,72 @@ const { wecome_title, wecome_content, constellatory, from, like, tagcloud } = re
                         transform: scale(1.2);
                 }
         }
+}
+
+@media (max-width: 768px) {
+        .melist {
+                   overflow-x: hidden;
+                .el-row {
+                        margin-bottom: 0;
+                }
+
+                .grid-content {
+                        margin: 5px;
+                        .wecome {
+                                .wecome-title {
+                                        font-size: 24px;
+                                }
+                        }
+
+                        .info {
+                                .info-content {
+                                        font-size: 24px;
+                                }
+                        }
+
+
+
+                        .selfhood {
+                                .self {
+                                        font-size: 28px;
+                                }
+
+                                .selfhood-cover {
+                                        right: -60px;
+                                }
+                        }
+
+                        .talk {
+                                font-size: 18px;
+
+                                .decoration {
+                                        font-size: 60px;
+
+                                        &.top-left {
+                                                top: -20px;
+                                                left: -15px;
+                                        }
+
+                                        &.bottom-right {
+                                                bottom: -20px;
+                                                right: -15px;
+                                        }
+                                }
+
+                                .emoji {
+                                        font-size: 24px;
+                                }
+
+                                .welcome-text {
+                                        font-size: 28px;
+                                }
+
+                                p {
+                                        font-size: 16px;
+                                }
+                        }
+                }
+        }
+
 }
 </style>
