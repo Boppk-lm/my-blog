@@ -31,7 +31,7 @@ import My from '../../components/post/My.vue';
 // 接收文章
 import { useRoute } from 'vue-router';
 import { useListStore } from '../../stores';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import type { ListItem } from '../../stores/ListStore';
 //引入 Markdown 渲染器
 import MarkdownIt from 'markdown-it'
@@ -41,7 +41,7 @@ const ListStore = useListStore()
 const postContent = ref(''); // 存储文章内容 HTML
 const tag = ref('')
 const article = ref<ListItem>(); // 存储整篇文章对象
-onMounted(() => {
+function reader() {
         // 获取文章的id
         const post_id = parseInt(route.params.id as string)
         article.value = ListStore.ListMap.find(item => item.id === post_id)
@@ -54,9 +54,15 @@ onMounted(() => {
         <h3>文章未找到</h3>
         <p>抱歉，您请求的文章不存在或已被删除</p>
       </div>`
+       tag.value = ''
         }
+}
+onMounted(() => {
+        reader()
 })
-
+watch(
+   ()=>route.params.id,reader
+)
 const goBack = () => {
         window.history.back();
 }
