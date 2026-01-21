@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-wrapper">
+  <div class="nav-wrapper" >
     <!-- PC端导航栏 -->
     <el-menu mode="horizontal" class="el-menu-demo  pc-nav" :ellipsis="false" :default-active="$route.path" router
       background-color="transparent" text-color="#fff" active-text-color="#fff">
@@ -91,6 +91,8 @@ watch(() => isOpen.value, (newVal) => {
 </script>
 
 <style lang="less" scoped>
+
+
 .el-menu--horizontal>.el-menu-item:nth-child(1) {
   margin-right: auto;
 }

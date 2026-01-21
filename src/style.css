@@ -1,11 +1,16 @@
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
   background-color: #f5f7fa;
   color: #555;
-    overflow-x: hidden; /* 防止水平滚动条出现 */
 }
+/* ✅ 只保留页面滚动：关闭 Element Plus 内部滚动 */
+.el-container,
+.el-main {
+  height: auto !important;
+  overflow: visible !important;
+}
+
 a {
   text-decoration: none;
   color:black ;

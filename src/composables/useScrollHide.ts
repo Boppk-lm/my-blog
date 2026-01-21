@@ -5,7 +5,6 @@ export default function useScrollHide() {
     let lastScrollTop = 0 // 上次滚动位置
     function handleScroll() {
         const scrollTop = window.scrollY || document.documentElement.scrollTop
-
         if (scrollTop > lastScrollTop) {
             // 向下滚动，隐藏导航栏
             isHidden.value = true
