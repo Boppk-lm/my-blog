@@ -813,7 +813,7 @@ PC 端看着好好的页面，一到手机上就开始变形：
 > 它日若得脱身法，生吃黄连苦也甜~
 `
       },
-          {
+      {
         id: 13,
         cover: 'cover14.png',
         title: '我也不知道该说些什么了',
@@ -862,9 +862,12 @@ PC 端看着好好的页面，一到手机上就开始变形：
       const uniqueTagIds = new Set(state.ListMap.map(item => item.tagId))
       return uniqueTagIds.size
     },
-    // 读取.md文件
+    // 获取md.文件
     postModules: () => {
-      return import.meta.glob('./posts/*.md', { eager: true,query:'?raw' ,import: 'default'})
+      return import.meta.glob(
+        './posts/*.md',
+        { eager: true, query: '?raw' ,import: 'default' }
+      )
     }
   }
 })
