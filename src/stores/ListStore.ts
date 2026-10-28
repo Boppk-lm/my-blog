@@ -861,6 +861,10 @@ PC 端看着好好的页面，一到手机上就开始变形：
       // 利用 Set 统计唯一的 tagId 数量
       const uniqueTagIds = new Set(state.ListMap.map(item => item.tagId))
       return uniqueTagIds.size
+    },
+    // 读取.md文件
+    postModules: () => {
+      return import.meta.glob('./posts/*.md', { eager: true,query:'?raw' ,import: 'default'})
     }
   }
 })
