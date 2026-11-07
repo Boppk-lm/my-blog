@@ -42,6 +42,7 @@
 <script setup lang='ts'>
 const name = 'home'
 import homeBg from '../assets/home_bg.webp';
+import homeBgTiny from '../assets/home_bg_tiny.webp';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
@@ -75,7 +76,7 @@ import { useHideStore } from '../stores';
 const hidestore = useHideStore()
 const title = ref(hidestore.TitleMap[name].hide)
 const string = reactive(hidestore.TitleMap[name].string)
-const smallBg = homeBg
+const smallBg = homeBgTiny
 </script>
 
 <style lang="less" scoped>

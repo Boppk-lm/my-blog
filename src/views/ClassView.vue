@@ -41,6 +41,7 @@
 <script setup lang='ts'>
 const name = 'class'
 import classBg from '../assets/class_bg.webp';
+import classBgTiny from '../assets/class_bg_tiny.webp';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
@@ -55,7 +56,7 @@ import { useHideStore } from '../stores';
 const hidestore = useHideStore()
 const title = ref(hidestore.TitleMap[name].hide)
 const string = ref(hidestore.TitleMap[name].string[0])
-const smallBg = classBg
+const smallBg = classBgTiny
 </script>
 
 <style lang="less" scoped>

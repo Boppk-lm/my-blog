@@ -1,6 +1,8 @@
 <template>
     <!-- 背景图 -->
-    <div class="hero-header" :style="{ backgroundImage: currentBg  }" ref="heroRef">
+    <div class="hero-header" ref="heroRef">
+        <!-- 背景层：先铺小图，大图加载完再切换 -->
+        <div class="hero-bg" :style="{ backgroundImage: currentBg }"></div>
         <!-- 泡泡容器 -->
         <div class="bubble-container"></div>
         <!-- 文字容器 -->
@@ -56,13 +58,25 @@ onMounted(() => {
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     padding: 0 !important;
-    background-size: cover;
-    /* 图片覆盖整个区域 */
-    background-position: center;
-    /* 图片居中 */
-    background-repeat: no-repeat;
-    /* 禁止重复 */
     aspect-ratio: 16 / 9;
+
+    // 背景图由 .hero-bg 承载，blur 才不会波及里面的文字
+    .hero-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        // 放大一点，让模糊产生的边缘羽化被容器裁掉，避免露白边
+        transform: scale(1.06);
+        filter: blur(12px);
+        transition: filter 0.7s ease;
+    }
+
+    &.loaded .hero-bg {
+        filter: blur(0);
+    }
     /* 16:9宽高比 */
 
     // 条纹叠加层
@@ -127,13 +141,5 @@ onMounted(() => {
         }
     }
 }
-}
-// 封面加载优化
-.hero-header {
-    filter: blur(10px);
-    transition: filter 0.6s ease;
-}
-.hero-header.loaded {
-    filter: blur(0);
 }
 </style>

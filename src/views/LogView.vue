@@ -41,6 +41,7 @@
 <script setup lang='ts'>
 const name = 'log'
 import logBg from '../assets/log_bg.webp';
+import logBgTiny from '../assets/log_bg_tiny.webp';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
@@ -55,7 +56,7 @@ import { useHideStore } from '../stores';
 const hidestore = useHideStore()
 const title = ref(hidestore.TitleMap[name].hide)
 const string = ref(hidestore.TitleMap[name].string[0])
-const smallBg = logBg
+const smallBg = logBgTiny
 </script>
 
 <style lang="less" scoped>
