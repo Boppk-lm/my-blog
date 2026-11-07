@@ -55,7 +55,7 @@ import { useHideStore } from '../stores';
 const hidestore = useHideStore()
 const title = ref(hidestore.TitleMap[name].hide)
 const string = ref(hidestore.TitleMap[name].string[0])
-const smallBg = `${meBg}?width=400&quality=60`;
+const smallBg = meBg
 </script>
 
 <style lang="less" scoped>

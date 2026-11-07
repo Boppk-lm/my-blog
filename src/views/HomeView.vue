@@ -75,7 +75,7 @@ import { useHideStore } from '../stores';
 const hidestore = useHideStore()
 const title = ref(hidestore.TitleMap[name].hide)
 const string = reactive(hidestore.TitleMap[name].string)
-const smallBg = `${homeBg}?width=400&quality=60`;
+const smallBg = homeBg
 </script>
 
 <style lang="less" scoped>
