@@ -57,9 +57,9 @@
 </template>
 
 <script setup lang='ts'>
-import nameAvatar from '@/assets/name.jpg'
+import nameAvatar from '@/assets/name.webp'
 // 动态导入封面
-const images = import.meta.glob('../../assets/cover/*.png', { eager: true, import: 'default' }) as Record<string, string>
+const images = import.meta.glob('../../assets/cover/*.webp', { eager: true, import: 'default' }) as Record<string, string>
 // 接受父组件的元素
 defineProps(['ListMap'])
 // 跳转到分类页面

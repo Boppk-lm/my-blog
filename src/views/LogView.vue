@@ -40,7 +40,7 @@
 
 <script setup lang='ts'>
 const name = 'log'
-import logBg from '../assets/log_bg.png';
+import logBg from '../assets/log_bg.webp';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';

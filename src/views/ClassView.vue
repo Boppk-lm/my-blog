@@ -40,7 +40,7 @@
 
 <script setup lang='ts'>
 const name = 'class'
-import classBg from '../assets/class_bg.png';
+import classBg from '../assets/class_bg.webp';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
@@ -63,7 +63,7 @@ const smallBg = classBg
 
 // 控制背景
 .el-header {
-  background-image: url('../assets/class_bg.png');
+  background-image: url('../assets/class_bg.webp');
 }
 </style>
 

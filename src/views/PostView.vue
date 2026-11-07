@@ -40,7 +40,7 @@
 
 <script setup lang='ts'>
 const name = 'post'
-import postBg from '../assets/post_bg.png';
+import postBg from '../assets/post_bg.webp';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
@@ -63,7 +63,7 @@ const smallBg = postBg
 
 // 控制背景
 .el-header {
-  background-image: url('../assets/post_bg.png');
+  background-image: url('../assets/post_bg.webp');
 }
 </style>
 <!-- 非 scoped 样式：用于动态插入的泡泡 -->

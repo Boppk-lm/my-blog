@@ -1,14 +1,25 @@
-@font-face {
-    font-family: "阿里妈妈数黑体 Bold";
-    font-weight: 700;
-    src: url("AlimamaShuHeiTi-Bold.woff2") format("woff2"),
-    url("AlimamaShuHeiTi-Bold.woff") format("woff");
-    font-display: swap;
-}
+/* 字体已子集化：原始 9.5MB -> 498KB */
 
+/* 重新生成子集（先 pip install fonttools brotli）：
+   1. 生成字符表 chars.txt：GB2312 一级汉字 + ASCII + CJK 标点(U+3000-303F)
+      + 平假名(U+3041-3096) + 片假名(U+30A1-30FA) + 全角符号(U+FF01-FF5E)
+   2. pyftsubset "<原字体>" --text-file=chars.txt --flavor=woff2 --no-hinting \
+        --desubroutinize --output-file=PuHuiTi-subset.woff2
+   3. 校验：用 fontTools 读取 cmap，与文章标题实际用字比对，确认无缺字 */
+
+/* 普惠体：保留 GB2312 一级字库 + 假名 + 全角符号，用于文章标题 */
 @font-face {
     font-family: "阿里巴巴普惠体 Light";
     font-weight: 400;
-    src: url("./Alibaba_PuHuiTi_2.0_45_Light_45_Light.ttf");
+    src: url("./PuHuiTi-subset.woff2") format("woff2");
+    font-display: swap;
+}
+
+/* 数黑体：仅保留导航栏 9 个字（首页 / 开发历程 / 关于我） */
+/* 注意：导航栏若新增文字，需按上面步骤重新生成子集，否则该字会回退到系统字体 */
+@font-face {
+    font-family: "阿里妈妈数黑体 Bold";
+    font-weight: 700;
+    src: url("./Alimama-subset.woff2") format("woff2");
     font-display: swap;
 }

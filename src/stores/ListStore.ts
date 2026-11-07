@@ -23,7 +23,7 @@ export const useListStore = defineStore('list', {
     ListMap: [
       {
         id: 0,
-        cover: 'cover1.png',
+        cover: 'cover1.webp',
         title: '我的建站缘由',
         content: '我一直都想有个自己的网站,在里面我可以记录一些东西,虽然现在它还只是个静态的,但我相信不久以后,它会慢慢变的更好的,就如你我一样。',
         name: '南下',
@@ -55,7 +55,7 @@ export const useListStore = defineStore('list', {
       },
       {
         id: 1,
-        cover: 'cover2.png',
+        cover: 'cover2.webp',
         title: '《lvdamengの开发日志》技术解析:纯静态博客',
         content: '基于 Vue 3 + Vite 构建的纯静态博客系统,无需后端,支持按需加载与模块化开发。文章将详解页面结构、动画实现、静态资源管理与自动部署流程,全面解析《lvdamengの开发日志》背后的技术实现。',
         name: '南下',
@@ -140,7 +140,7 @@ onMounted(() => {
       },
       {
         id: 2,
-        cover: 'cover3.png',
+        cover: 'cover3.webp',
         title: '近期任务汇报：找工作与 Vue3 重构之路',
         content: '汇报一下近期的状态：找工作+重构 Vue2 项目 正好手头有一个 Vue2 的老项目,打算用 Vue3 重新开发一遍,顺便重新熟悉一下 axios',
         name: '南下',
@@ -172,7 +172,7 @@ onMounted(() => {
       },
       {
         id: 3,
-        cover: 'cover4.png',
+        cover: 'cover4.webp',
         title: 'Vue3 重构大事件后台管理系统总结',
         content: '最近把之前写的大事件后台管理系统从 Vue2 重构到 Vue3,顺便熟悉了 Pinia、Axios、Element Plus 等技术,并整理了心得体会。',
         name: '南下',
@@ -275,7 +275,7 @@ onMounted(() => {
       ,
       {
         id: 4,
-        cover: 'cover5.png',
+        cover: 'cover5.webp',
         title: '进厂了-没想到最后还是这条路',
         content: '最终还是选择了进厂,先攒点钱吧。站班很累,不知道能不能坚持下去。',
         name: '南下',
@@ -302,7 +302,7 @@ ps：厂里的饭还是不错的,就是有点小贵。
       ,
       {
         id: 5,
-        cover: 'cover6.png',
+        cover: 'cover6.webp',
         title: '这次,我想我会成功的~',
         content: '好久没更新了,总体还行。腿已经完全适应了,虽然上周连着十几天才休息,但也还是撑住了。后来调去了一个相对轻松的岗位,算是个小幸运。只是对比朋友在努力备考学习,自己却总是摆烂,心里难免觉得惭愧。不过,这次我真的想做好,不想再让自己失望了。',
         name: '南下',
@@ -327,7 +327,7 @@ ps：厂里的饭还是不错的,就是有点小贵。
       ,
       {
         id: 6,
-        cover: 'cover7.png',
+        cover: 'cover7.webp',
         title: '进厂过渡副本结束,开启南京求职副本~',
         content: '终于还是扛不住了,哈哈,太累了,尤其是夜班。干了两个月,也攒下了一些启动资金,准备开启南京副本~',
         name: '南下',
@@ -349,7 +349,7 @@ ps：厂里的饭还是不错的,就是有点小贵。
       ,
       {
         id: 7,
-        cover: 'cover8.png',
+        cover: 'cover8.webp',
         title: 'SSL配置踩坑与原理复盘',
         content: '今天打开博客突然发现网站访问不了了,当时我以为是 GitHub Pages 崩了,结果一查才发现是负责托管的 Cloudflare 配置出了岔子。',
         name: '南下',
@@ -484,7 +484,7 @@ SSL 证书就相当于网站的“身份证”。
       ,
       {
         id: 8,
-        cover: 'cover9.png',
+        cover: 'cover9.webp',
         title: '导航栏下划线显示 Bug 与解决方案',
         content: '突然发现一个小 Bug,我的博客在访问主页面时上方导航栏是有下划线的,但转到别的页面下划线就不显示了。找了半天原因,最后没想到是因为这个。',
         name: '南下',
@@ -589,7 +589,7 @@ SSL 证书就相当于网站的“身份证”。
       ,
       {
         id: 9,
-        cover: 'cover10.png',
+        cover: 'cover10.webp',
         title: '一次移动端适配的折腾记录',
         content: '分享一下最近我在博客项目中实现移动端适配的过程吧。也是好久没更新了，新的一年，共同进步~',
         name: '南下',
@@ -686,7 +686,7 @@ PC 端看着好好的页面，一到手机上就开始变形：
       },
       {
         id: 10,
-        cover: 'cover11.png',
+        cover: 'cover11.webp',
         title: '前路迷茫，我怎么天天迷茫啊~',
         content: '时间怎么过的这么快啊，转眼都是20号了。最近有些低迷，不知道该干什么了...',
         name: '南下',
@@ -722,7 +722,7 @@ PC 端看着好好的页面，一到手机上就开始变形：
       },
       {
         id: 11,
-        cover: 'cover12.png',
+        cover: 'cover12.webp',
         title: '失踪人口回归~ 也算是入了门了',
         content: '好久没更新了，趁着五一假期更新一手，记录一下自己。目前是高强度外包基础测试，纯血牛马一只，就先这样混着吧。',
         name: '南下',
@@ -761,7 +761,7 @@ PC 端看着好好的页面，一到手机上就开始变形：
       },
       {
         id: 12,
-        cover: 'cover13.png',
+        cover: 'cover13.webp',
         title: '离职跑路~ 也许我要休息一阵子',
         content: '不出意外，我最终还是离职了，跑路啦~ 说实话，已经不知道该干些什么了，也许我要好好休息一阵子了。',
         name: '南下',
@@ -815,7 +815,7 @@ PC 端看着好好的页面，一到手机上就开始变形：
       },
       {
         id: 13,
-        cover: 'cover14.png',
+        cover: 'cover14.webp',
         title: '我也不知道该说些什么了',
         content: '我也不知道该说些什么了，就随便写写吧~ ',
         name: '南下',

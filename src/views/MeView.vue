@@ -40,7 +40,7 @@
 
 <script setup lang='ts'>
 const name = 'me'
-import meBg from '../assets/me_bg.png';
+import meBg from '../assets/me_bg.webp';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';
@@ -63,7 +63,7 @@ const smallBg = meBg
 
 // 控制背景
 .hero-header {
-  background-image: url('../assets/me_bg.png');
+  background-image: url('../assets/me_bg.webp');
 }
 </style>
 <!-- 非 scoped 样式：用于动态插入的泡泡 -->

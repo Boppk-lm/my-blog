@@ -62,7 +62,7 @@
                                                         <span> 免费测试人格</span>
                                                 </div>
                                                 <div class="selfhood-cover">
-                                                        <img src="../../assets/selfhood.jpg" alt="">
+                                                        <img src="../../assets/selfhood.webp" alt="">
                                                 </div>
                                         </div>
                                 </div>

@@ -41,7 +41,7 @@
 
 <script setup lang='ts'>
 const name = 'home'
-import homeBg from '../assets/home_bg.png';
+import homeBg from '../assets/home_bg.webp';
 import NavBar from '../components/NavBar.vue';
 import Footer from '../components/Footer.vue';
 import PageContent from '../components/PageContent.vue';

@@ -5,7 +5,7 @@
       background-color="transparent" text-color="#fff" active-text-color="#fff">
       <!-- logo -->
       <el-menu-item index="/" class="no-underline">
-        <img style="width: 180px" src="../assets/logo.png" alt="logo" />
+        <img style="width: 180px" src="../assets/logo.webp" alt="logo" />
       </el-menu-item>
       <!-- 首页 -->
       <el-menu-item index="/">
@@ -31,7 +31,7 @@
     </el-menu>
     <!-- 移动端导航栏 -->
     <div class="mobile-nav-top">
-      <img class="mobile-logo" src="../assets/logo.png" alt="logo" />
+      <img class="mobile-logo" src="../assets/logo.webp" alt="logo" />
       <button class="mobile-menu-btn" @click="isOpen = true">☰</button>
     </div>
     <!--手机端全屏抽屉菜单 -->
@@ -42,7 +42,7 @@
         <div v-if="isOpen" class="mobile-menu"  @click.stop>
 
           <div class="mobile-menu-header">
-            <img class="mobile-logo-big" src="../assets/logo.png" alt="logo" />
+            <img class="mobile-logo-big" src="../assets/logo.webp" alt="logo" />
             <button class="mobile-close" @click="isOpen = false">✕</button>
           </div>
 

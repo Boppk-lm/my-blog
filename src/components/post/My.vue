@@ -73,7 +73,7 @@
                                                 <div class="QR"></div>
                                                 <div class="search">
                                                         <div class="top">
-                                                                <img src="../../assets/weixin.png" alt="">
+                                                                <img src="../../assets/weixin.webp" alt="">
                                                                 <span>微信搜一搜</span>
                                                         </div>
                                                         <div class="bottom">
@@ -94,7 +94,7 @@
 </template>
 
 <script setup lang='ts'>
-import nameAvatar from '@/assets/name.jpg'
+import nameAvatar from '@/assets/name.webp'
 //用pinia控制My部分
 import { useMyStore, useListStore } from '../../stores';
 import { reactive } from 'vue';
@@ -248,7 +248,7 @@ const { name, individuality, affiche } = reactive(MyStore)
                         margin-left: 15px;
                         width: 80px;
                         height: 80px;
-                        background-image: url(../../assets/QR.png);
+                        background-image: url(../../assets/QR.webp);
                         background-size: cover;
                         /* 图片覆盖整个区域 */
                         background-position: center;
