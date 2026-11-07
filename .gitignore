@@ -14,6 +14,8 @@ dist-ssr
 
 # 图片优化备份，勿提交
 src/assets-backup/
+# 图片压缩的中间产物目录（--inplace 模式不会产生）
+src/assets/new/
 
 # Editor directories and files
 .vscode/*

@@ -1,8 +1,12 @@
+import sys
 from PIL import Image, ImageOps, ImageSequence
 from pathlib import Path
 
 A = Path('src/assets')
-OUT = A / 'new'                    # 所有产物都落在这里，子目录按源路径镜像
+# --inplace : 产物直接写回源文件同目录（CI 和 npm run img 用这个）
+# 不带参数  : 产物统一落到 src/assets/new/，便于先对比再决定
+INPLACE = '--inplace' in sys.argv
+OUT = A if INPLACE else A / 'new'   # 子目录按源路径镜像
 
 RULE = [
     ('home_bg*', 1920, False),
