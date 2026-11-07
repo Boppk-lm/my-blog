@@ -195,7 +195,7 @@ export const useLogStore = defineStore('log', {
             "content": "能力有限，暂时找不到合适的开发工作，只能转测试了，先入行积累积累经验~",
             "insight": "😌 承认不足，先把眼前的事情做好吧~"
         },
-             {
+        {
             "id": 26,
             "date": "2026/11/07",
             "title": "压缩图片优化访问速度",
