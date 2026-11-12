@@ -94,7 +94,13 @@ const routes = [
 ]
 const router = createRouter({
     history: createWebHashHistory(import.meta.env.BASE_URL),
-    routes
+    routes,
+    // 切换页面时的滚动位置：新页面一律回到顶部，
+    // 只有浏览器前进/后退才恢复原来的位置（方便从文章退回列表时接着看）
+    scrollBehavior(_to, _from, savedPosition) {
+        if (savedPosition) return savedPosition
+        return { top: 0 }
+    }
 })
 // 路由守卫 网页加载条
 // 开始加载

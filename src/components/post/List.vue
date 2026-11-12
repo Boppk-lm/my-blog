@@ -4,7 +4,7 @@
     <div class="list">
       <!-- 封面 -->
       <div class="cover" @click="navigate">
-        <img :src="images[`../../assets/cover/${ListMap.cover}`]" alt="" loading="lazy">
+        <img :src="coverUrl(ListMap.cover)" alt="" loading="lazy">
         <div class="mask">
           <el-icon size="25">
             <SvgIcon iconName="icon-dianji"></SvgIcon>
@@ -58,8 +58,21 @@
 
 <script setup lang='ts'>
 import nameAvatar from '@/assets/name.webp'
-// 动态导入封面
-const images = import.meta.glob('../../assets/cover/*.webp', { eager: true, import: 'default' }) as Record<string, string>
+// 动态导入封面：webp / png / jpg 都收，方便本地直接丢原图预览
+const images = import.meta.glob('../../assets/cover/*.{webp,png,jpg,jpeg}', { eager: true, import: 'default' }) as Record<string, string>
+
+// md 里写 cover15.png 或 cover15 都能用：
+// 优先取同名 webp（CI 压缩后的产物），没有再退回原图
+const COVER_EXTS = ['webp', 'png', 'jpg', 'jpeg']
+function coverUrl(name: string): string {
+  if (!name) return ''
+  const stem = name.replace(/\.[^.]+$/, '')
+  for (const ext of COVER_EXTS) {
+    const hit = images[`../../assets/cover/${stem}.${ext}`]
+    if (hit) return hit
+  }
+  return ''
+}
 // 接受父组件的元素
 defineProps(['ListMap'])
 // 跳转到分类页面

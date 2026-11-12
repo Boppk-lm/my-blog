@@ -17,6 +17,8 @@ jobs:
         run: |
           python3 -m pip install --quiet --upgrade pillow
           python3 scripts/opt-img.py --inplace
+          # 转完删掉原图：一来避免 png/jpg 被打进 dist，二来上传体积更小
+          find src/assets -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \) -delete
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
         with:
