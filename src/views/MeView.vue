@@ -1,73 +1,22 @@
 <template>
-  <!-- 导航栏 -->
-  <div class="nav-bar" :class="{ hide: isHidden }">
-    <NavBar :active="active" />
-  </div>
-  <el-container>
-
-    <HeroHeader :bg="meBg" :title="title" :small-bg="smallBg">
-      <template #subtitle>
-        <p>{{ string }}</p>
-      </template>
-    </HeroHeader>
-    <el-main>
-      <!-- 页面显示 -->
-      <PageContent />
-    </el-main>
-    <el-footer>
-      <!-- 页尾 -->
-      <Footer />
-    </el-footer>
-  </el-container>
-  <!-- 回到顶部 -->
-  <el-backtop :bottom="100" :visibility-height="10" :right="5">
-    <div style="
-        height: 100%;
-        width: 100%;
-        background-color: var(--el-bg-color-overlay);
-        box-shadow: var(--el-box-shadow-lighter);
-        text-align: center;
-        line-height: 40px;
-        border-radius: 10%;
-        color: #666666;
-      ">
-      <el-icon>
-        <ArrowUpBold />
-      </el-icon>
-    </div>
-  </el-backtop>
+  <PageLayout :bg="bg" :small-bg="smallBg" :title="title" :active="active">
+    <template #subtitle>
+      <p>{{ string }}</p>
+    </template>
+  </PageLayout>
 </template>
 
 <script setup lang='ts'>
-const name = 'me'
 import meBg from '../assets/me_bg.webp';
 import meBgTiny from '../assets/me_bg_tiny.webp';
-import NavBar from '../components/NavBar.vue';
-import Footer from '../components/Footer.vue';
-import PageContent from '../components/PageContent.vue';
-import HeroHeader from '../components/HeroHeader.vue';
-import { ref } from 'vue'
-const active = ref('me')  //控制导航栏地址
-//导入封装控制导航栏的函数
-import useScrollHide from '../composables/useScrollHide';
-const { isHidden } = useScrollHide()
+import PageLayout from '../components/PageLayout.vue';
 //使用pinia控制标题
 import { useHideStore } from '../stores';
+const name = 'me'
+const active = 'me'  //控制导航栏地址
 const hidestore = useHideStore()
-const title = ref(hidestore.TitleMap[name].hide)
-const string = ref(hidestore.TitleMap[name].string[0])
+const title = hidestore.TitleMap[name].hide
+const string = hidestore.TitleMap[name].string[0]
+const bg = meBg
 const smallBg = meBgTiny
 </script>
-
-<style lang="less" scoped>
-@import '../less/nav.less';
-
-// 控制背景
-.hero-header {
-  background-image: url('../assets/me_bg.webp');
-}
-</style>
-<!-- 非 scoped 样式：用于动态插入的泡泡 -->
-<style lang="less">
-@import '../less/bubble.less';
-</style>
