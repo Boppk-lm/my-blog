@@ -5,10 +5,11 @@ interface TitleItem {
 }
 // 封装各个标题
 import { defineStore } from 'pinia'
+import { AUTHOR } from '../config'
 export const useHideStore = defineStore('hide', {
   state: ():{TitleMap:Record<string,TitleItem>} => ({
     TitleMap:{
-      home:  {hide:'南下',string:[
+      home:  {hide: AUTHOR,string:[
          '欢迎来到我的世界~',
           '一个无趣的人.',
          '一场没有归期的远行~'

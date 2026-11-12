@@ -83,7 +83,7 @@
                                                                                 <Search />
                                                                         </el-icon>
                                                                 </span>
-                                                                <span>南下</span>
+                                                                <span>{{ name }}</span>
                                                         </div>
                                                 </div>
                                         </div>

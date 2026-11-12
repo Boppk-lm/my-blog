@@ -11,11 +11,11 @@
                         </el-row>
                         <!-- 下拉线 -->
                         <div v-if="showExpand" class="expand-line" @click="expand">
-                                <span>{{ '再来一些吧' }}</span>
+                                <span>{{ '再来一些' }}</span>
                                 <i v-if="!expanded" class="arrow"></i>
                         </div>
                         <div v-else class="expand-line" style="pointer-events: none;">
-                                <span>{{ '就这么多了~' }}</span>
+                                <span>{{ '到底了~' }}</span>
                         </div>
                 </div>
                 <!-- 个人信息 -->
@@ -34,9 +34,6 @@ import My from '../../components/post/My.vue';
 //用pinia控制文章列表
 import { useListStore } from '../../stores';
 const ListStore = useListStore()
-
-// 文章数据统一来自 ListStore.ListMap
-// TODO: 将来接入 stores/posts/*.md 时，把解析结果合并进 ListMap 再渲染
 
 const ListMap = reactive(ListStore.ListMap)
 // 文章超3行隐藏

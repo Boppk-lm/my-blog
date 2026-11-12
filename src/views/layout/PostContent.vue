@@ -31,30 +31,69 @@ import My from '../../components/post/My.vue';
 // 接收文章
 import { useRoute } from 'vue-router';
 import { useListStore } from '../../stores';
+import { loadPostBody } from '../../stores/postBody';
 import { onMounted, ref, watch } from 'vue';
 import type { ListItem } from '../../stores/ListStore';
 //引入 Markdown 渲染器
 import MarkdownIt from 'markdown-it'
+// 代码高亮：只注册实际用得到的语言，避免把整个 highlight.js 打进来
+import hljs from 'highlight.js/lib/core'
+import xml from 'highlight.js/lib/languages/xml'
+import typescript from 'highlight.js/lib/languages/typescript'
+import javascript from 'highlight.js/lib/languages/javascript'
+import css from 'highlight.js/lib/languages/css'
+import less from 'highlight.js/lib/languages/less'
+import bash from 'highlight.js/lib/languages/bash'
+import json from 'highlight.js/lib/languages/json'
+import 'highlight.js/styles/github.css'
+
+hljs.registerLanguage('xml', xml)
+hljs.registerLanguage('typescript', typescript)
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('css', css)
+hljs.registerLanguage('less', less)
+hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('json', json)
+// html / vue 借用 xml 的语法
+hljs.registerAliases(['html', 'vue'], { languageName: 'xml' })
+
 const md = new MarkdownIt()
+// 默认的 fence 规则不会加 .hljs 类，这里接管一下
+const defaultFence = md.renderer.rules.fence!
+md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        const info = tokens[idx].info.trim().split(/\s+/)[0]
+        if (info && hljs.getLanguage(info)) {
+                const code = hljs.highlight(tokens[idx].content, { language: info }).value
+                return `<pre class="hljs"><code class="language-${info}">${code}</code></pre>\n`
+        }
+        return defaultFence(tokens, idx, options, env, self)
+}
 const route = useRoute()
 const ListStore = useListStore()
 const postContent = ref(''); // 存储文章内容 HTML
 const tag = ref('')
 const article = ref<ListItem>(); // 存储整篇文章对象
-function reader() {
+async function reader() {
         // 获取文章的id
         const post_id = parseInt(route.params.id as string)
-        article.value = ListStore.ListMap.find(item => item.id === post_id)
-        if (article.value) {
-                // 把markdown字符串渲染成HTML
-                postContent.value = md.render(article.value.post)
-                tag.value = article.value.tag
-        } else {
+        const found = ListStore.ListMap.find(item => item.id === post_id)
+        if (!found) {
+                article.value = undefined
                 postContent.value = ` <div class="not-found">
         <h3>文章未找到</h3>
         <p>抱歉，您请求的文章不存在或已被删除</p>
       </div>`
-       tag.value = ''
+                tag.value = ''
+                return
+        }
+
+        article.value = found
+        tag.value = found.tag
+        // 正文按需下载：只有打开这篇文章时，才加载它对应的 md
+        const body = await loadPostBody(found.file)
+        // 快速切换文章时，丢弃已经过期的结果
+        if (article.value?.id === found.id) {
+                postContent.value = md.render(body)
         }
 }
 onMounted(() => {
