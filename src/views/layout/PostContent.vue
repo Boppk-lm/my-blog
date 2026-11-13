@@ -207,6 +207,31 @@ const goBack = () => {
                                 }
                         }
 
+                        // 表格：宽了就自己横向滑动，不能被外层 overflow 裁掉
+                        table {
+                                display: block;
+                                width: 100%;
+                                max-width: 100%;
+                                overflow-x: auto;
+                                margin: 1.5rem 0;
+                                border-collapse: collapse;
+                                font-size: 0.95rem;
+                                -webkit-overflow-scrolling: touch;
+
+                                th,
+                                td {
+                                        padding: 8px 12px;
+                                        border: 1px solid #eaeaea;
+                                        white-space: nowrap; // 中文不被压成竖排，靠滑动看全
+                                }
+
+                                th {
+                                        background-color: #f7f8fa;
+                                        font-weight: 600;
+                                        color: #2c3e50;
+                                }
+                        }
+
                         strong {
                                 // color: #e74c3c;
                                 font-weight: 600;
@@ -236,6 +261,18 @@ const goBack = () => {
         }
 }
 
+// 平板：侧边栏挪到正文下面，别让正文只剩 70% 宽
+@media (max-width: 1024px) {
+        .postcount {
+                flex-direction: column;
+
+                .count,
+                .sidebar {
+                        flex: 0 0 100%;
+                }
+        }
+}
+
 @media (max-width: 768px) {
         .postcount {
                 overflow-x: hidden;
@@ -244,9 +281,14 @@ const goBack = () => {
                 .count {
                         flex: 0 0 100%;
 
-                        // 头部消失
+                        // 手机端保留返回入口，只是压紧一点
                         :deep(.el-page-header) {
-                                display: none;
+                                margin-bottom: 10px;
+
+                                .el-page-header__left {
+                                        padding: 8px 4px;
+                                        margin-left: -4px;
+                                }
                         }
 
                         :deep(.article-content) {
@@ -263,6 +305,14 @@ const goBack = () => {
 
                                 p {
                                         font-size: 1rem;
+                                }
+
+                                // 列表跟着段落走，别比正文大一号
+                                ul,
+                                ol {
+                                        li {
+                                                font-size: 1rem;
+                                        }
                                 }
 
                                 pre {

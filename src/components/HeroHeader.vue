@@ -127,6 +127,20 @@ onMounted(() => {
     }
 
 }
+    /* 平板 / 小笔记本：封面不要占满整个首屏 */
+@media (max-width: 1200px) {
+    .hero-header {
+        height: 560px;
+         .header-content {
+        h1 {
+            font-size: 36px;
+         }
+        p {
+            font-size: 16px;
+        }
+    }
+}
+}
     /* 📱 移动端自动变矮 */
 @media (max-width: 768px) {
     .hero-header {

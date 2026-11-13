@@ -1,5 +1,5 @@
 // 公共导航栏隐藏控制 nav.less
-.el-main { 
+.el-main {
    padding: 0 !important;
 }
 .el-footer {
@@ -18,4 +18,9 @@
 .nav-bar.hide {
   transform: translateY(-100%); /* 向上滑动自己，把导航栏“藏起来” */
     background-color: rgba(0, 0, 0, 0.2); /* 向上收缩时，渐显出灰色背景 */
+}
+
+/* 回到顶部按钮：给 iPhone 底部手势条留出空间 */
+.el-backtop {
+  margin-bottom: env(safe-area-inset-bottom);
 }

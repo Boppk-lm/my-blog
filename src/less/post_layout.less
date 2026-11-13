@@ -28,6 +28,18 @@
 
 }
 
+// 平板：侧边栏挪到列表下面，别让文章卡片只剩 70% 宽
+@media (max-width: 1024px) {
+        .postlist {
+                flex-direction: column;
+
+                .post,
+                .sidebar {
+                        flex: 0 0 100%;
+                }
+        }
+}
+
 // 移动端适配
 @media (max-width: 768px) {
         .postlist {

@@ -20,7 +20,7 @@
     </el-footer>
   </el-container>
   <!-- 回到顶部 -->
-  <el-backtop :bottom="100" :visibility-height="10" :right="5">
+  <el-backtop :bottom="100" :visibility-height="10" :right="16">
     <div
         style="
         height: 100%;

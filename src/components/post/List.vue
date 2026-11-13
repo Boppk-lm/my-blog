@@ -231,4 +231,11 @@ function goToClass(tagId: number) {
 
   }
 }
+// 手机端：固定 160px 太紧，标题一长或摘要换行就会顶出卡片
+@media (max-width: 768px) {
+  .list .box {
+    height: auto;
+    min-height: 150px;
+  }
+}
 </style>
