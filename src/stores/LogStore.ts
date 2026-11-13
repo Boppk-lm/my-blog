@@ -180,6 +180,12 @@ export const useLogStore = defineStore('log', {
             content: '把 14 篇文章从 TS 里搬到 posts/*.md,列表改成前端解析。',
             insight: '📦 终于不用为了写文章改 800 行了'
         },
+        {
+            date: '2026-11-13',
+            title: '手机上能看了',
+            content: '修了一堆移动端的老问题，导航抽屉也重做了。404 换成了悬崖场景，点一下车掉下去就回首页。',
+            insight: '🍭 404 比正文好看'
+        },
         ]
     }),
     getters: {
