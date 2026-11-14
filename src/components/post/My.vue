@@ -35,7 +35,7 @@
                                                                         </div>
                                                                         <div class="number">
                                                                                 {{ siteDay }}<span
-                                                                                        class="unit"></span>
+                                                                                        class="unit">天</span>
                                                                         </div>
                                                                 </div>
                                                                 <div>
