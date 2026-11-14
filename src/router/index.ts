@@ -1,4 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+// 站点配置：页面标题
+import { setTitle } from "../config";
 // 引入加载条
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -21,11 +23,13 @@ const PostContent = () => import("../views/layout/PostContent.vue");
 const ClassView = ()=> import("../views/ClassView.vue") ;
 const ClassList = () => import("../views/layout/ClassListView.vue");
 // 路由配置
+// meta.title：浏览器标签上的名字（文章页/分类页的标题是数据里的，组件内自己设）
 const routes = [
     {
         //首页
         path: '/',
         component: HomeView,
+        meta: { title: '' },
         children: [
             {
                 path: '',
@@ -39,6 +43,7 @@ const routes = [
         path: '/log',
         name: 'Log',
         component: LogView,
+        meta: { title: '开发历程' },
         children: [
             {
                 path: '',
@@ -52,6 +57,7 @@ const routes = [
         path: '/me',
         name: 'Me',
         component: MeView,
+        meta: { title: '关于我' },
         children: [
             {
                 path: '',
@@ -89,7 +95,8 @@ const routes = [
     //404!!!
     {
         path: '/:pathMatch(.*)*',
-        component: NotFoundView
+        component: NotFoundView,
+        meta: { title: '页面走丢了' }
     }
 ]
 const router = createRouter({
@@ -110,7 +117,9 @@ router.beforeEach((_, __, next) => {
 })
 
 // 加载完成
-router.afterEach(() => {
+router.afterEach((to) => {
   NProgress.done()
+  // 标签页标题：静态页直接取 meta，文章页/分类页由组件在拿到数据后再覆盖一次
+  setTitle((to.meta.title as string) || undefined)
 })
 export default router

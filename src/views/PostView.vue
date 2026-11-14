@@ -8,7 +8,7 @@
 
 <script setup lang='ts'>
 import postBg from '../assets/post_bg.webp';
-import postBgTiny from '../assets/post_bg_tiny.webp';
+import postBgTiny from '../assets/post_bg_tiny.webp?inline';
 import PageLayout from '../components/PageLayout.vue';
 //使用pinia控制标题
 import { useHideStore } from '../stores';

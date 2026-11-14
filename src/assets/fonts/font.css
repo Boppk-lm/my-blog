@@ -1,13 +1,13 @@
-/* 字体已子集化：原始 9.5MB -> 498KB */
+/* 字体已子集化：原始 9.5MB -> 497KB（GB2312 一级字库）-> 现在 102KB（站点实际用字） */
 
-/* 重新生成子集（先 pip install fonttools brotli）：
-   1. 生成字符表 chars.txt：GB2312 一级汉字 + ASCII + CJK 标点(U+3000-303F)
-      + 平假名(U+3041-3096) + 片假名(U+30A1-30FA) + 全角符号(U+FF01-FF5E)
-   2. pyftsubset "<原字体>" --text-file=chars.txt --flavor=woff2 --no-hinting \
-        --desubroutinize --output-file=PuHuiTi-subset.woff2
-   3. 校验：用 fontTools 读取 cmap，与文章标题实际用字比对，确认无缺字 */
+/* 重新生成（自动扫描源码文案 + 文章标题，不用手写字符表）：
+   npm run font
 
-/* 普惠体：保留 GB2312 一级字库 + 假名 + 全角符号，用于文章标题 */
+   原理：scripts/build-font.py 从 scripts/fonts/PuHuiTi-src.woff2（一级字库那版）
+   里按实际用字裁剪。新增文章后如果标题出现字库外的字，
+   build-posts.mjs 会打印警告，跑一次 npm run font 即可。 */
+
+/* 普惠体：只保留站点实际用到的字，用于列表卡片标题 */
 @font-face {
     font-family: "阿里巴巴普惠体 Light";
     font-weight: 400;

@@ -31,6 +31,11 @@ body::-webkit-scrollbar {
 span,p,h4,h1 {
         pointer-events: none;
 }
+/* 坑：pointer-events 会连带作用于整棵子树，
+   正文里的 <p><a href> 链接会一起被禁掉、点不动。这里单独放回来。 */
+a {
+  pointer-events: auto;
+}
 #app {
   display: flex; 
   width: 100%;
@@ -63,5 +68,19 @@ span,p,h4,h1 {
   }
   100% {
     box-shadow: 0 0 5px #3498db;
+  }
+}
+
+/* 系统开了「减少动态效果」就收掉这些循环动画：
+   泡泡、云漂移、呼吸灯、加载条发光、404 的车摆来摆去。
+   不影响功能（车照样能点，只是不播坠落动画），也省点电。 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

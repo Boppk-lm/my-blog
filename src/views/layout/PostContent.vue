@@ -12,8 +12,12 @@
                                                         </template>
 
                                                 </el-page-header>
-                                                <!-- 内容 -->
-                                                <div class="mt-4 text-sm article-content" v-html="postContent">
+                                                <!-- 内容：正文没到之前先占位，避免闪上一篇的正文 -->
+                                                <div v-if="loading" class="mt-4 article-loading">
+                                                        正在翻页…
+                                                </div>
+                                                <div v-else class="mt-4 text-sm article-content"
+                                                        v-html="postContent">
                                                 </div>
                                         </div>
                                 </el-col>
@@ -33,6 +37,7 @@ import { useRoute } from 'vue-router';
 import { useListStore } from '../../stores';
 import { loadPostBody } from '../../stores/postBody';
 import { onMounted, ref, watch } from 'vue';
+import { setTitle } from '../../config';
 import type { ListItem } from '../../stores/ListStore';
 //引入 Markdown 渲染器
 import MarkdownIt from 'markdown-it'
@@ -56,7 +61,6 @@ hljs.registerLanguage('bash', bash)
 hljs.registerLanguage('json', json)
 // html / vue 借用 xml 的语法
 hljs.registerAliases(['html', 'vue'], { languageName: 'xml' })
-
 const md = new MarkdownIt()
 // 默认的 fence 规则不会加 .hljs 类，这里接管一下
 const defaultFence = md.renderer.rules.fence!
@@ -68,12 +72,26 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
         }
         return defaultFence(tokens, idx, options, env, self)
 }
+
+// 正文里的站外链接：新窗口打开，别把读者带离站点
+const defaultLinkOpen = md.renderer.rules.link_open
+md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+        const href = tokens[idx].attrGet('href') || ''
+        if (/^https?:\/\//i.test(href)) {
+                tokens[idx].attrSet('target', '_blank')
+                tokens[idx].attrSet('rel', 'noopener noreferrer')
+        }
+        if (defaultLinkOpen) return defaultLinkOpen(tokens, idx, options, env, self)
+        return self.renderToken(tokens, idx, options)
+}
 const route = useRoute()
 const ListStore = useListStore()
 const postContent = ref(''); // 存储文章内容 HTML
 const tag = ref('')
 const article = ref<ListItem>(); // 存储整篇文章对象
+const loading = ref(true); // 正文还没到，先显示占位，避免闪上一篇的内容
 async function reader() {
+        loading.value = true
         // 获取文章的id
         const post_id = parseInt(route.params.id as string)
         const found = ListStore.ListMap.find(item => item.id === post_id)
@@ -84,17 +102,21 @@ async function reader() {
         <p>抱歉，您请求的文章不存在或已被删除</p>
       </div>`
                 tag.value = ''
+                setTitle('文章未找到')
+                loading.value = false
                 return
         }
 
         article.value = found
         tag.value = found.tag
+        // 标题用索引里的就够了，不用等正文下载完
+        setTitle(found.title)
         // 正文按需下载：只有打开这篇文章时，才加载它对应的 md
         const body = await loadPostBody(found.file)
-        // 快速切换文章时，丢弃已经过期的结果
-        if (article.value?.id === found.id) {
-                postContent.value = md.render(body)
-        }
+        // 快速切换文章时，丢弃已经过期的结果（loading 交给新那一次去关）
+        if (article.value?.id !== found.id) return
+        postContent.value = md.render(body)
+        loading.value = false
 }
 onMounted(() => {
         reader()
@@ -115,6 +137,16 @@ const goBack = () => {
         .count {
                 flex: 0 0 70%; // 🔥 真正控制宽度
                 min-width: 0; // 防止溢出
+
+                // 正文加载占位：给个最小高度，切文章时页面不跳
+                .article-loading {
+                        min-height: 320px;
+                        padding: 60px 0;
+                        text-align: center;
+                        color: #999;
+                        font-size: 14px;
+                        letter-spacing: 1px;
+                }
 
                 // 文章内容样式
                 :deep(.article-content) {

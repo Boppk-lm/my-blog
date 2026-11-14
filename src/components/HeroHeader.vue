@@ -31,10 +31,12 @@ const props = withDefaults(defineProps<{
 if (props.bubble !== false) {
     useBubbleHide()
 }
-const currentBg = ref(`url(${props.smallBg})`); // 初始为小图
+const currentBg = ref(`url(${props.smallBg})`); // 初始为小图（已内联成 data URI，随 JS 一起到，不用再发请求）
 const heroRef = ref<HTMLElement | null>(null); 
 onMounted(() => {
     const img = new Image();
+    // 封面是首屏视觉主体，别让它排在别的资源后面
+    img.fetchPriority = 'high';
     img.src = props.bg;
     img.onload = () => {
         currentBg.value = `url(${props.bg})`; // 加载完成后切换为大图

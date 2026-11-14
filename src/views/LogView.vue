@@ -8,7 +8,7 @@
 
 <script setup lang='ts'>
 import logBg from '../assets/log_bg.webp';
-import logBgTiny from '../assets/log_bg_tiny.webp';
+import logBgTiny from '../assets/log_bg_tiny.webp?inline';
 import PageLayout from '../components/PageLayout.vue';
 //使用pinia控制标题
 import { useHideStore } from '../stores';

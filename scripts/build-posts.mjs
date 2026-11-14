@@ -65,3 +65,25 @@ if (problems.length) {
   console.log('\n有问题的地方：')
   for (const p of problems) console.log('  - ' + p)
 }
+
+// 字体覆盖检查：标题用「阿里巴巴普惠体」，字体是裁剪过的子集，
+// 新标题里出现字库外的字会回退系统字体（同一行混排，看着很怪）。
+// 这里拿 build-font.py 留下的字符表比对，提前提醒。
+try {
+  const chars = readFileSync(join(root, 'scripts/fonts/chars.txt'), 'utf-8')
+  const known = new Set(chars)
+  const missing = new Set()
+  for (const p of list) {
+    for (const ch of p.title + p.tag) {
+      // 只查汉字，标点/假名回退很正常
+      if (ch >= '\u4e00' && ch <= '\u9fff' && !known.has(ch)) missing.add(ch)
+    }
+  }
+  if (missing.size) {
+    console.log(`\n[字体] 标题里有 ${missing.size} 个字不在字体子集里：${[...missing].join('')}`)
+    console.log('       跑一次 npm run font 重新生成（改了标题才需要）')
+  }
+} catch {
+  // 没生成过字体就跳过
+}
+

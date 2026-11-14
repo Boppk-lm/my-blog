@@ -8,7 +8,7 @@
 
 <script setup lang='ts'>
 import classBg from '../assets/class_bg.webp';
-import classBgTiny from '../assets/class_bg_tiny.webp';
+import classBgTiny from '../assets/class_bg_tiny.webp?inline';
 import PageLayout from '../components/PageLayout.vue';
 //使用pinia控制标题
 import { useHideStore } from '../stores';

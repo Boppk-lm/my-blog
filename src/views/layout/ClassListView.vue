@@ -27,18 +27,24 @@
 </template>
 
 <script setup lang='ts'>
-import { computed,ref } from 'vue';
+import { computed,ref,watch } from 'vue';
 import List from '../../components/post/List.vue';
 import My from '../../components/post/My.vue';
 //获取分类文章列表
 import { useListStore } from '../../stores';
 import { useRoute } from 'vue-router';
+import { setTitle } from '../../config';
 const ListStore = useListStore()
 const route = useRoute()
-const tagId = parseInt(route.params.id as string)
+// 用 computed 而不是直接取值：同一个组件内换分类时，列表要跟着变
+const tagId = computed(() => parseInt(route.params.id as string))
 const ClassList = computed(() => {
-        return ListStore.ListMap.filter(item => item.tagId === tagId)
+        return ListStore.ListMap.filter(item => item.tagId === tagId.value)
 })
+// 标签页标题跟着分类名走（分类名只有列表数据里有）
+watch(ClassList, (list) => {
+        setTitle(list[0]?.tag || '分类')
+}, { immediate: true })
 // 文章超3行隐藏
 const LIMIT = 9
 // 控制展开

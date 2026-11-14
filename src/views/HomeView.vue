@@ -8,7 +8,7 @@
 
 <script setup lang='ts'>
 import homeBg from '../assets/home_bg.webp';
-import homeBgTiny from '../assets/home_bg_tiny.webp';
+import homeBgTiny from '../assets/home_bg_tiny.webp?inline';
 import PageLayout from '../components/PageLayout.vue';
 import { ref, onMounted, onUnmounted, reactive } from 'vue';
 //打字机效果

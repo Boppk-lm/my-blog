@@ -31,10 +31,11 @@
                                                                 </div>
                                                                 <div>
                                                                         <div class="title">
-                                                                                评论
+                                                                                建站
                                                                         </div>
                                                                         <div class="number">
-                                                                                0
+                                                                                {{ siteDay }}<span
+                                                                                        class="unit"></span>
                                                                         </div>
                                                                 </div>
                                                                 <div>
@@ -99,10 +100,13 @@ import nameAvatar from '@/assets/name.webp'
 import { useMyStore, useListStore } from '../../stores';
 import { reactive } from 'vue';
 import { storeToRefs } from 'pinia'
+import { siteDays } from '../../config'
 const MyStore = useMyStore()
 const listStore = useListStore()
 const { listLength, tagLength } = storeToRefs(listStore)
 const { name, individuality, affiche } = reactive(MyStore)
+// 建站天数：建站日在 config.ts 里改
+const siteDay = siteDays()
 </script>
 
 <style lang="less" scoped>
@@ -213,6 +217,13 @@ const { name, individuality, affiche } = reactive(MyStore)
                                 display: flex;
                                 justify-content: space-around;
                                 text-align: center;
+
+                                // 「475天」里的「天」：跟着数字缩放，别喧宾夺主
+                                .unit {
+                                        font-size: 0.66em;
+                                        margin-left: 2px;
+                                        opacity: 0.65;
+                                }
                         }
                 }
         }
