@@ -39,7 +39,7 @@
                                                                 </div>
                                                                 <div>
                                                                         <div class="title">
-                                                                                天数
+                                                                                建站
                                                                         </div>
                                                                         <div class="number">
                                                                                 {{ siteDay }}
