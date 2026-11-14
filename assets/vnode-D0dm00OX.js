@@ -1,0 +1,1 @@
+import{a7 as a,an as t}from"./index-DIYy9xKK.js";const o=r=>{const p=a(r)?r:[r],s=[];return p.forEach(e=>{var n;a(e)?s.push(...o(e)):t(e)&&((n=e.component)!=null&&n.subTree)?s.push(e,...o(e.component.subTree)):t(e)&&a(e.children)?s.push(...o(e.children)):t(e)&&e.shapeFlag===2?s.push(...o(e.type())):s.push(e)}),s};export{o as f};
