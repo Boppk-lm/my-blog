@@ -31,19 +31,18 @@
                                                                 </div>
                                                                 <div>
                                                                         <div class="title">
-                                                                                建站
-                                                                        </div>
-                                                                        <div class="number">
-                                                                                {{ siteDay }}<span
-                                                                                        class="unit"></span>
-                                                                        </div>
-                                                                </div>
-                                                                <div>
-                                                                        <div class="title">
                                                                                 分类
                                                                         </div>
                                                                         <div class="number">
                                                                                 {{ tagLength }}
+                                                                        </div>
+                                                                </div>
+                                                                <div>
+                                                                        <div class="title">
+                                                                                天数
+                                                                        </div>
+                                                                        <div class="number">
+                                                                                {{ siteDay }}
                                                                         </div>
                                                                 </div>
                                                         </div>
